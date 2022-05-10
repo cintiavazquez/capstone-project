@@ -12,7 +12,6 @@
     "prepare": "husky install",
     "eslint": "npx eslint \"**/*.js\"",
     "husky": "npm run prettier:write && npm run eslint"
-
   },
   "dependencies": {
     "next": "12.1.6",
