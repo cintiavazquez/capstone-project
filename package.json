@@ -10,8 +10,7 @@
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --write .",
     "prepare": "husky install",
-    "eslint": "npx eslint \"**/*.js\"",
-    "husky": "npm run prettier:write && npm run eslint"
+    "eslint": "npx eslint \"**/*.js\""
   },
   "dependencies": {
     "next": "12.1.6",
@@ -21,13 +20,14 @@
   "devDependencies": {
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
-    "husky": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-xo-react": "^0.27.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-storybook": "^0.5.11",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2"
   }
 }
