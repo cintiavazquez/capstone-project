@@ -8,5 +8,14 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions"
   ],
-  "framework": "@storybook/react"
+  "framework": "@storybook/react",
+  webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      include: /node_modules/,
+      test: /\.mjs$/,
+      type: "javascript/auto",
+    });
+    return config;
+  },
 }
+
