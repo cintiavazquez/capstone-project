@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Creme Vega",
+    "rating": "good",
+    "comment": "Loved this vegan alternative to sour cream, even though it’s a bit pricey for daily use",
+    "location": "Edeka Bandelt Ottenser Hauptstraße 10, 22765 Hamburg"
+  },
+  {
+    "name": "caramel ice cream",
+    "rating": "middling",
+    "comment": "Quite good vegan ice cream",
+    "location": "Eisbande Bartelsstraße 1, 20357 Hamburg"
+  },
+  {
+    "name": "vegan white chocolate",
+    "rating": "bad",
+    "comment": "Tastes literally like nothing",
+    "location": "Alnatura Hahnenkamp 1, 22765 Hamburg"
+  }
+]
