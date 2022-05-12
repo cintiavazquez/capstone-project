@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ReviewCard from '../src/components/ReviewCard';
+import ReviewCard from './ReviewCard';
 import '@testing-library/jest-dom';
 
 describe('ReviewCard', () => {

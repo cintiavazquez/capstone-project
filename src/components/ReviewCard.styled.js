@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SingleReviewCard = styled.div`
+export const SingleReviewCard = styled.article`
 	list-style: none;
 	box-shadow: 2px 2px 8px grey;
 	padding: 10px;
