@@ -1,4 +1,4 @@
-import ReviewCard from '../components/ReviewCard';
+import ReviewCard from '../components/ReviewCard/ReviewCard';
 
 export default {
 	title: 'Components/ReviewCard',
