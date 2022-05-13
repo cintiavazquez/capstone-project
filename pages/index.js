@@ -1,6 +1,5 @@
 import getReviews from '../src/services/get-reviews';
 import ReviewList from '../src/components/ReviewList/ReviewList';
-
 import { ListGrid } from '../src/components/ReviewList/ListGrid.styled';
 
 export function getStaticProps() {
