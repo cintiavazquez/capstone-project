@@ -1,14 +1,21 @@
-import ReviewCard from '../src/components/ReviewCard';
 import getReviews from '../src/services/get-reviews';
+import ReviewList from '../src/components/ReviewList/ReviewList';
+import { ListGrid } from '../src/components/ReviewList/ListGrid.styled';
 
-export default function Home() {
+export function getStaticProps() {
 	const reviews = getReviews();
+
+	return {
+		props: {
+			reviews,
+		},
+	};
+}
+
+export default function Home({ reviews }) {
 	return (
-		<ReviewCard
-			name={reviews[2].name}
-			comment={reviews[2].comment}
-			rating={reviews[2].rating}
-			location={reviews[2].location}
-		/>
+		<ListGrid>
+			<ReviewList reviewData={reviews} />
+		</ListGrid>
 	);
 }

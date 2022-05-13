@@ -1,5 +1,4 @@
 import { SingleReviewCard } from './ReviewCard.styled';
-import { LocationAdress } from './ReviewCard.styled';
 
 export default function ReviewCard(props) {
 	return (
@@ -7,7 +6,7 @@ export default function ReviewCard(props) {
 			<h3>{props.name}</h3>
 			<p>{props.rating}</p>
 			<p>{props.comment}</p>
-			<LocationAdress>{props.location}</LocationAdress>
+			<p>{props.location}</p>
 		</SingleReviewCard>
 	);
 }
