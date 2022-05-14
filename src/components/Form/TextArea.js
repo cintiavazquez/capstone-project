@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
-
 import { TextArea } from './TextArea.styled';
+
 export default function FormTextArea({ children, name, control, id }) {
 	console.log(name, id);
 	return (
@@ -32,8 +32,4 @@ export default function FormTextArea({ children, name, control, id }) {
 			)}
 		/>
 	);
-}
-
-{
-	/* <TextArea>{children}</TextArea>; */
 }

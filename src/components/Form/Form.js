@@ -5,7 +5,7 @@ import { FormWarning } from './FormWarning.styled';
 import FormTextArea from './TextArea';
 import Label from './FormLabel';
 import React from 'react';
-//import FormFieldset from './Fieldset';
+import FormFieldset from './Fieldset';
 
 export default function Form() {
 	const {
@@ -18,7 +18,7 @@ export default function Form() {
 	const onSubmit = data => console.log(data);
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			{/* <FormFieldset {...register('rating', { required: true })}>
+			<FormFieldset>
 				<Label htmlFor="rating">Rate the product:</Label>
 
 				<input
@@ -49,7 +49,7 @@ export default function Form() {
 				<Label htmlFor="rating_bad">Bad</Label>
 
 				{errors.rating && <FormWarning>This field is required</FormWarning>}
-			</FormFieldset> */}
+			</FormFieldset>
 
 			<Label htmlFor="name">Product name:</Label>
 			<input {...register('name', { required: true })} name="name" type="text" id="name" />
