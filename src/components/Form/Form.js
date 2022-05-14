@@ -1,21 +1,24 @@
 import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
-import FormFieldset from './Fieldset';
 import { FormStyled } from './Form.styled';
 import { FormWarning } from './FormWarning.styled';
 import FormTextArea from './TextArea';
 import Label from './FormLabel';
+import React from 'react';
+//import FormFieldset from './Fieldset';
 
 export default function Form() {
 	const {
 		register,
 		handleSubmit,
+		control,
+		onBlur,
 		formState: { errors },
 	} = useForm();
 	const onSubmit = data => console.log(data);
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<FormFieldset {...register('rating', { required: true })}>
+			{/* <FormFieldset {...register('rating', { required: true })}>
 				<Label htmlFor="rating">Rate the product:</Label>
 
 				<input
@@ -46,7 +49,7 @@ export default function Form() {
 				<Label htmlFor="rating_bad">Bad</Label>
 
 				{errors.rating && <FormWarning>This field is required</FormWarning>}
-			</FormFieldset>
+			</FormFieldset> */}
 
 			<Label htmlFor="name">Product name:</Label>
 			<input {...register('name', { required: true })} name="name" type="text" id="name" />
@@ -63,12 +66,16 @@ export default function Form() {
 
 			<Label htmlFor="comment">Write your review</Label>
 			<FormTextArea
-				{...register('comment', { required: true })}
+				control={control}
 				name="comment"
 				type="text"
 				id="comment"
+				onBlur={onBlur}
 			/>
 			{errors.comment && <FormWarning>Please enter your review</FormWarning>}
+
+			<Label htmlFor="otto">Otto</Label>
+			<input {...register('otto', { required: true })} name="otto" id="otto" type="text" />
 
 			<Button type="submit">Post review</Button>
 		</FormStyled>
