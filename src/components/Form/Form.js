@@ -7,8 +7,11 @@ import React from 'react';
 import { TextArea } from './TextArea.styled';
 import { Input } from './Input.styled';
 import { FormFieldset } from './Fieldset.styled';
+import useStore from '../../useStore/useStore';
 
 export default function Form() {
+	const addReview = useStore(state => state.addReview);
+
 	const {
 		register,
 		handleSubmit,
@@ -16,6 +19,7 @@ export default function Form() {
 	} = useForm();
 	const onSubmit = (data, e) => {
 		console.log(data);
+		addReview(data);
 		e.target.reset();
 	};
 	return (
