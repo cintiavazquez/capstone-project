@@ -8,6 +8,7 @@ import { TextArea } from './TextArea.styled';
 import { Input } from './Input.styled';
 import { FormFieldset } from './Fieldset.styled';
 import useStore from '../../useStore/useStore';
+import { Legend } from './Legend.styled';
 
 export default function Form() {
 	const addReview = useStore(state => state.addReview);
@@ -28,7 +29,7 @@ export default function Form() {
 				aria-invalid={errors.rating ? 'true' : 'false'}
 				{...register('rating', { required: true })}
 			>
-				<legend>Rate the product:</legend>
+				<Legend>Rate the product:</Legend>
 
 				<input
 					{...register('rating')}
