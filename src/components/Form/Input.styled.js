@@ -1,4 +1,4 @@
 import styled from 'styled-components';
-export const TextArea = styled.textarea`
+export const Input = styled.input`
 	background-color: lightblue;
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const FormFieldsetStyled = styled.fieldset`
+export const FormFieldset = styled.fieldset`
 	padding: 10px;
 `;

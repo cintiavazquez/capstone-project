@@ -2,23 +2,22 @@ import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import { FormStyled } from './Form.styled';
 import { FormWarning } from './FormWarning.styled';
-import FormTextArea from './TextArea';
-import Label from './FormLabel';
+import { Label } from './Label.styled';
 import React from 'react';
-import FormFieldset from './Fieldset';
+import { TextArea } from './TextArea.styled';
+import { Input } from './Input.styled';
+import { FormFieldset } from './Fieldset.styled';
 
 export default function Form() {
 	const {
 		register,
 		handleSubmit,
-		control,
-		onBlur,
 		formState: { errors },
 	} = useForm();
 	const onSubmit = data => console.log(data);
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<FormFieldset>
+			<FormFieldset {...register('rating', { required: true })}>
 				<Label htmlFor="rating">Rate the product:</Label>
 
 				<input
@@ -52,30 +51,27 @@ export default function Form() {
 			</FormFieldset>
 
 			<Label htmlFor="name">Product name:</Label>
-			<input {...register('name', { required: true })} name="name" type="text" id="name" />
+			<Input {...register('name', { required: true })} name="name" type="text" id="name" />
 			{errors.name && <FormWarning>Please enter a name</FormWarning>}
 
 			<Label htmlFor="location">Where did you buy this product?</Label>
-			<input
+			<Input
 				{...register('location', { required: true })}
 				name="location"
-				type="text"
+				type="radtextio"
 				id="location"
 			/>
+
 			{errors.location && <FormWarning>Please enter a location</FormWarning>}
 
 			<Label htmlFor="comment">Write your review</Label>
-			<FormTextArea
-				control={control}
+			<TextArea
+				{...register('comment', { required: true })}
 				name="comment"
 				type="text"
 				id="comment"
-				onBlur={onBlur}
 			/>
 			{errors.comment && <FormWarning>Please enter your review</FormWarning>}
-
-			<Label htmlFor="otto">Otto</Label>
-			<input {...register('otto', { required: true })} name="otto" id="otto" type="text" />
 
 			<Button type="submit">Post review</Button>
 		</FormStyled>
