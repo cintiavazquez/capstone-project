@@ -14,11 +14,17 @@ export default function Form() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const onSubmit = data => console.log(data);
+	const onSubmit = (data, e) => {
+		console.log(data);
+		e.target.reset();
+	};
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<FormFieldset {...register('rating', { required: true })}>
-				<Label htmlFor="rating">Rate the product:</Label>
+			<FormFieldset
+				aria-invalid={errors.rating ? 'true' : 'false'}
+				{...register('rating', { required: true })}
+			>
+				<legend>Rate the product:</legend>
 
 				<input
 					{...register('rating')}
@@ -47,31 +53,49 @@ export default function Form() {
 				/>
 				<Label htmlFor="rating_bad">Bad</Label>
 
-				{errors.rating && <FormWarning>This field is required</FormWarning>}
+				{errors.rating && <FormWarning role="alert">This field is required</FormWarning>}
 			</FormFieldset>
 
 			<Label htmlFor="name">Product name:</Label>
-			<Input {...register('name', { required: true })} name="name" type="text" id="name" />
-			{errors.name && <FormWarning>Please enter a name</FormWarning>}
+			<Input
+				aria-invalid={errors.name ? 'true' : 'false'}
+				{...register('name', { required: true, maxLength: 30 })}
+				name="name"
+				type="text"
+				id="name"
+			/>
+			{errors.name && errors.name.type === 'required' && (
+				<FormWarning role="alert">Please enter a name</FormWarning>
+			)}
+			{errors.name && errors.name.type === 'maxLength' && (
+				<FormWarning role="alert">The name must be under 30 characters</FormWarning>
+			)}
 
 			<Label htmlFor="location">Where did you buy this product?</Label>
 			<Input
+				aria-invalid={errors.location ? 'true' : 'false'}
 				{...register('location', { required: true })}
 				name="location"
-				type="radtextio"
+				type="text"
 				id="location"
 			/>
 
-			{errors.location && <FormWarning>Please enter a location</FormWarning>}
+			{errors.location && <FormWarning role="alert">Please enter a location</FormWarning>}
 
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
-				{...register('comment', { required: true })}
+				aria-invalid={errors.comment ? 'true' : 'false'}
+				{...register('comment', { required: true, maxLength: 30 })}
 				name="comment"
 				type="text"
 				id="comment"
 			/>
-			{errors.comment && <FormWarning>Please enter your review</FormWarning>}
+			{errors.comment && errors.comment.type === 'required' && (
+				<FormWarning role="alert">Please enter your review</FormWarning>
+			)}
+			{errors.comment && errors.comment.type === 'maxLength' && (
+				<FormWarning role="alert">The comment must be under 700 characters</FormWarning>
+			)}
 
 			<Button type="submit">Post review</Button>
 		</FormStyled>
