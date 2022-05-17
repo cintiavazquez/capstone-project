@@ -5,17 +5,17 @@ const useStore = create(set => ({
 	review: [
 		{
 			id: nanoid(),
-			name: 'testproduct',
+			name: 'Vegan yoghurt',
 			rating: 'good',
 			comment: 'I liked this product',
 			location: 'Edeka Hamburg',
 		},
 		{
 			id: nanoid(),
-			name: 'testproduct2',
+			name: 'Mango ice cream',
 			rating: 'bad',
 			comment: "I didn't like this product",
-			location: 'Eisdiele X Hamburg',
+			location: 'Eisdiele Hamburg',
 		},
 	],
 	addReview: data => {
