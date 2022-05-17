@@ -1,16 +1,18 @@
 import create from 'zustand';
+import { nanoid } from 'nanoid';
+
 const useStore = create(set => ({
 	review: [
 		{
+			id: nanoid(),
 			name: 'testproduct',
-			id: 1,
 			rating: 'good',
 			comment: 'I liked this product',
 			location: 'Edeka Hamburg',
 		},
 		{
+			id: nanoid(),
 			name: 'testproduct2',
-			id: 2,
 			rating: 'bad',
 			comment: "I didn't like this product",
 			location: 'Eisdiele X Hamburg',
@@ -22,7 +24,7 @@ const useStore = create(set => ({
 				review: [
 					...state.review,
 					{
-						id: data.name,
+						id: nanoid(),
 						name: data.name,
 						rating: data.rating,
 						comment: data.comment,

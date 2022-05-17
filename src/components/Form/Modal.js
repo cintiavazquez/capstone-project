@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { ModalWindow } from './Modal.styled';
 import { Button } from '../Button/Button.styled';
 export default function Modal({ visibility, modalHide }) {
 	if (visibility === true) {
@@ -14,12 +14,3 @@ export default function Modal({ visibility, modalHide }) {
 		return '';
 	}
 }
-
-const ModalWindow = styled.div`
-	color: black;
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	text-align: center;
-	background-color: white;
-`;

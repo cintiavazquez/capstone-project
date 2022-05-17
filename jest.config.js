@@ -9,4 +9,10 @@ const customJestConfig = {
 	testEnvironment: 'jest-environment-jsdom',
 };
 
+const { defaults } = require('jest-config');
+module.exports = {
+	...defaults,
+	resolver: `${__dirname}/jest-resolver.js`,
+};
+
 module.exports = createJestConfig(customJestConfig);

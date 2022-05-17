@@ -19,6 +19,7 @@ export default function Form({ modalShow }) {
 
 		formState: { errors },
 	} = useForm();
+
 	const onSubmit = (data, e) => {
 		addReview(data);
 		e.target.reset();
