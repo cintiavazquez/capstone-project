@@ -1,13 +1,13 @@
+import React from 'react';
+import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button.styled';
 import { FormStyled } from './Form.styled';
 import { FormWarning } from './FormWarning.styled';
 import { Label } from './Label.styled';
-import React from 'react';
 import { TextArea } from './TextArea.styled';
 import { Input } from './Input.styled';
 import { FormFieldset } from './Fieldset.styled';
-import useStore from '../../useStore/useStore';
 import { Legend } from './Legend.styled';
 
 export default function Form({ modalShow }) {
@@ -104,7 +104,9 @@ export default function Form({ modalShow }) {
 				<FormWarning role="alert">The comment must be under 700 characters</FormWarning>
 			)}
 
-			<Button type="submit">Post review</Button>
+			<Button type="submit" variant="submit">
+				Post review
+			</Button>
 		</FormStyled>
 	);
 }

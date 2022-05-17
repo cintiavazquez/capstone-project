@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-
+import { Button } from '../Button/Button.styled';
 export default function Modal({ visibility, modalHide }) {
 	if (visibility === true) {
 		return (
 			<ModalWindow>
 				<p>Thank you for your review!</p>
-				<button type="button" onClick={modalHide}>
+				<Button type="button" variant="close" onClick={modalHide}>
 					Close
-				</button>
+				</Button>
 			</ModalWindow>
 		);
 	} else {
