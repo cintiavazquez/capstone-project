@@ -10,19 +10,21 @@ import { FormFieldset } from './Fieldset.styled';
 import useStore from '../../useStore/useStore';
 import { Legend } from './Legend.styled';
 
-export default function Form() {
+export default function Form({ modalShow }) {
 	const addReview = useStore(state => state.addReview);
 
 	const {
 		register,
 		handleSubmit,
+
 		formState: { errors },
 	} = useForm();
 	const onSubmit = (data, e) => {
-		console.log(data);
 		addReview(data);
 		e.target.reset();
+		modalShow();
 	};
+
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
 			<FormFieldset
