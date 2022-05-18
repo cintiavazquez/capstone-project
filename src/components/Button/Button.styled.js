@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 export const Button = styled.button`
 	padding: 5px;
 
-	${({ variant = 'submit' }) =>
-		variant === 'submit' &&
+	${({ variant = 'post' }) =>
+		variant === 'post' &&
 		css`
       background-color: seagreen;
 	  color: white;

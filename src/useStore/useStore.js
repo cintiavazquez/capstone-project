@@ -2,7 +2,14 @@ import create from 'zustand';
 import { nanoid } from 'nanoid';
 
 const useStore = create(set => ({
-	review: [
+	modalState: false,
+	modalHide: () => {
+		set({ modalState: false });
+	},
+	modalShow: () => {
+		set({ modalState: true });
+	},
+	reviews: [
 		{
 			id: nanoid(),
 			name: 'Vegan yoghurt',
@@ -21,8 +28,8 @@ const useStore = create(set => ({
 	addReview: data => {
 		set(state => {
 			return {
-				review: [
-					...state.review,
+				reviews: [
+					...state.reviews,
 					{
 						id: nanoid(),
 						name: data.name,

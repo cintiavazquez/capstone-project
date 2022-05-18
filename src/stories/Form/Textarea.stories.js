@@ -1,5 +1,5 @@
 import { TextArea } from '../../components/Form/TextArea.styled';
-import { FormLabel } from '../../components/Form/Label.styled';
+import { Label } from '../../components/Form/Label.styled';
 
 export default {
 	title: 'Components/Form/Textarea',
@@ -18,7 +18,7 @@ const props = {
 export function Default() {
 	return (
 		<>
-			<FormLabel {...props} />
+			<Label {...props} />
 			<TextArea />
 		</>
 	);

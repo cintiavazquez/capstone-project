@@ -10,8 +10,9 @@ import { Input } from './Input.styled';
 import { FormFieldset } from './Fieldset.styled';
 import { Legend } from './Legend.styled';
 
-export default function Form({ modalShow }) {
+export default function Form() {
 	const addReview = useStore(state => state.addReview);
+	const modalShow = useStore(state => state.modalShow);
 
 	const {
 		register,
@@ -20,9 +21,9 @@ export default function Form({ modalShow }) {
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data, e) => {
+	const onSubmit = (data, event) => {
 		addReview(data);
-		e.target.reset();
+		event.target.reset();
 		modalShow();
 	};
 
@@ -93,7 +94,7 @@ export default function Form({ modalShow }) {
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
 				aria-invalid={errors.comment ? 'true' : 'false'}
-				{...register('comment', { required: true, maxLength: 30 })}
+				{...register('comment', { required: true, maxLength: 700 })}
 				name="comment"
 				type="text"
 				id="comment"
