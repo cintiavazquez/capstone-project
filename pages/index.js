@@ -1,21 +1,16 @@
-import getReviews from '../src/services/get-reviews';
 import ReviewList from '../src/components/ReviewList/ReviewList';
 import { ListGrid } from '../src/components/ReviewList/ListGrid.styled';
+import Form from '../src/components/Form/Form';
+import Modal from '../src/components/Form/Modal';
 
-export function getStaticProps() {
-	const reviews = getReviews();
-
-	return {
-		props: {
-			reviews,
-		},
-	};
-}
-
-export default function Home({ reviews }) {
+export default function Home() {
 	return (
-		<ListGrid>
-			<ReviewList reviewData={reviews} />
-		</ListGrid>
+		<>
+			<Modal />
+			<Form />
+			<ListGrid>
+				<ReviewList />
+			</ListGrid>
+		</>
 	);
 }
