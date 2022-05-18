@@ -1,5 +1,5 @@
-import { Input } from '../../components/Form/Input.styled';
-import { Label } from '../../components/Form/Label.styled';
+import { Input } from '../../UI/Input.styled';
+import { Label } from '../../UI/Label.styled';
 
 export default {
 	title: 'Components/Form/Input',

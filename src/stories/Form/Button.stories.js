@@ -1,4 +1,4 @@
-import { Button } from '../../components/Button/Button.styled';
+import { Button } from '../../UI/Button.styled';
 
 export default {
 	title: 'Components/Form/Button',

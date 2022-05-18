@@ -1,5 +1,5 @@
-import { TextArea } from '../../components/Form/TextArea.styled';
-import { Label } from '../../components/Form/Label.styled';
+import { TextArea } from '../../UI/TextArea.styled';
+import { Label } from '../../UI/Label.styled';
 
 export default {
 	title: 'Components/Form/Textarea',

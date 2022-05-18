@@ -1,14 +1,14 @@
 import React from 'react';
 import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
-import { Button } from '../Button/Button.styled';
-import { FormStyled } from './Form.styled';
-import { FormWarning } from './FormWarning.styled';
-import { Label } from './Label.styled';
-import { TextArea } from './TextArea.styled';
-import { Input } from './Input.styled';
-import { FormFieldset } from './Fieldset.styled';
-import { Legend } from './Legend.styled';
+import { Button } from '../../UI/Button.styled';
+import { FormStyled } from '../../UI/Form.styled';
+import { InputWarning } from '../../UI/InputWarning.styled';
+import { Label } from '../../UI/Label.styled';
+import { TextArea } from '../../UI/TextArea.styled';
+import { Input } from '../../UI/Input.styled';
+import { FormFieldset } from '../../UI/Fieldset.styled';
+import { Legend } from '../../UI/Legend.styled';
 
 export default function Form() {
 	const addReview = useStore(state => state.addReview);
@@ -62,7 +62,7 @@ export default function Form() {
 				/>
 				<Label htmlFor="rating_bad">Bad</Label>
 
-				{errors.rating && <FormWarning role="alert">This field is required</FormWarning>}
+				{errors.rating && <InputWarning role="alert">This field is required</InputWarning>}
 			</FormFieldset>
 
 			<Label htmlFor="name">Product name:</Label>
@@ -74,10 +74,10 @@ export default function Form() {
 				id="name"
 			/>
 			{errors.name && errors.name.type === 'required' && (
-				<FormWarning role="alert">Please enter a name</FormWarning>
+				<InputWarning role="alert">Please enter a name</InputWarning>
 			)}
 			{errors.name && errors.name.type === 'maxLength' && (
-				<FormWarning role="alert">The name must be under 30 characters</FormWarning>
+				<InputWarning role="alert">The name must be under 30 characters</InputWarning>
 			)}
 
 			<Label htmlFor="location">Where did you buy this product?</Label>
@@ -89,7 +89,7 @@ export default function Form() {
 				id="location"
 			/>
 
-			{errors.location && <FormWarning role="alert">Please enter a location</FormWarning>}
+			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>}
 
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
@@ -100,13 +100,13 @@ export default function Form() {
 				id="comment"
 			/>
 			{errors.comment && errors.comment.type === 'required' && (
-				<FormWarning role="alert">Please enter your review</FormWarning>
+				<InputWarning role="alert">Please enter your review</InputWarning>
 			)}
 			{errors.comment && errors.comment.type === 'maxLength' && (
-				<FormWarning role="alert">The comment must be under 700 characters</FormWarning>
+				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
 
-			<Button type="submit" variant="submit">
+			<Button type="submit" variant="post">
 				Post review
 			</Button>
 		</FormStyled>
