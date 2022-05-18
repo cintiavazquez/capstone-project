@@ -1,4 +1,4 @@
-import { SingleReviewCard } from './ReviewCard.styled';
+import { SingleReviewCard } from '../../UI/ReviewCard.styled';
 
 export default function ReviewCard(props) {
 	return (

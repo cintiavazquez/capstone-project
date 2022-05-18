@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const FormWarning = styled.span`
+export const InputWarning = styled.span`
 	margin: 10px;
 	color: red;
 `;

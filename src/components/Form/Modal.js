@@ -1,7 +1,11 @@
-import { ModalWindow } from './Modal.styled';
-import { Button } from '../Button/Button.styled';
-export default function Modal({ visibility, modalHide }) {
-	if (visibility === true) {
+import { ModalWindow } from '../../UI/Modal.styled';
+import { Button } from '../../UI/Button.styled';
+import useStore from '../../useStore/useStore';
+
+export default function Modal() {
+	const modalState = useStore(state => state.modalState);
+	const modalHide = useStore(state => state.modalHide);
+	if (modalState === true) {
 		return (
 			<ModalWindow>
 				<p>Thank you for your review!</p>

@@ -1,10 +1,10 @@
-import { FormWarning } from '../../components/Form/FormWarning.styled';
-import { Input } from '../../components/Form/Input.styled';
-import { Label } from '../../components/Form/Label.styled';
+import { InputWarning } from '../../UI/InputWarning.styled';
+import { Input } from '../../UI/Input.styled';
+import { Label } from '../../UI/Label.styled';
 
 export default {
 	title: 'Components/Form/Input error',
-	component: FormWarning,
+	component: InputWarning,
 	decorators: [
 		Story => {
 			return <Story />;
@@ -25,7 +25,7 @@ export function Default() {
 		<>
 			<Label {...props} />
 			<Input />
-			<FormWarning {...propsError} />
+			<InputWarning {...propsError} />
 		</>
 	);
 }
