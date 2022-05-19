@@ -7,6 +7,7 @@ export default function ReviewList() {
 		return (
 			<ReviewCard
 				key={review.id}
+				id={review.id}
 				name={review.name}
 				rating={review.rating}
 				location={review.location}

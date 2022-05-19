@@ -43,6 +43,13 @@ const useStore = create(
 				};
 			});
 		},
+		deleteReview: id => {
+			set(state => {
+				return {
+					reviews: state.reviews.filter(review => review.id !== id),
+				};
+			});
+		},
 	}))
 );
 export default useStore;
