@@ -17,13 +17,14 @@ export default function Form() {
 	const {
 		register,
 		handleSubmit,
+		reset,
 
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data, event) => {
+	const onSubmit = data => {
 		addReview(data);
-		event.target.reset();
+		reset();
 		modalShow('sent');
 	};
 
