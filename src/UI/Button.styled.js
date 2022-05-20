@@ -18,4 +18,12 @@ export const Button = styled.button`
       border: none;
       }
     `}
+	${({ variant }) =>
+		variant === 'delete' &&
+		css`
+      background-color: red;
+	  color: white;
+      border: none;
+      }
+    `}
 `;

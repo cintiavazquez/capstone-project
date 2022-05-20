@@ -4,12 +4,26 @@ import { nanoid } from 'nanoid';
 
 const useStore = create(
 	persist(set => ({
-		modalState: false,
-		modalHide: () => {
-			set({ modalState: false });
+		modalStates: { sent: false, delete: false },
+		modalMessages: {
+			sent: 'Thank you for your review',
+			delete: 'Do you really want to delete this review?',
 		},
-		modalShow: () => {
-			set({ modalState: true });
+		modalHide: key => {
+			set(state => {
+				return { modalStates: { ...state.modalStates, [key]: false } };
+			});
+		},
+		modalShow: key => {
+			set(state => {
+				return { modalStates: { ...state.modalStates, [key]: true } };
+			});
+		},
+		id: [],
+		setID: id => {
+			set(() => {
+				return { id: id };
+			});
 		},
 		reviews: [
 			{
@@ -40,6 +54,13 @@ const useStore = create(
 							location: data.location,
 						},
 					],
+				};
+			});
+		},
+		deleteReview: id => {
+			set(state => {
+				return {
+					reviews: state.reviews.filter(review => review.id !== id),
 				};
 			});
 		},
