@@ -24,7 +24,7 @@ export default function Form() {
 	const onSubmit = (data, event) => {
 		addReview(data);
 		event.target.reset();
-		modalShow();
+		modalShow('sent');
 	};
 
 	return (
