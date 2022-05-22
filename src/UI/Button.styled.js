@@ -26,4 +26,12 @@ export const Button = styled.button`
       border: none;
       }
     `}
+	${({ variant }) =>
+		variant === 'edit' &&
+		css`
+      background-color: yellow;
+	  color: black;
+      border: 1px solid black;
+      }
+    `}
 `;

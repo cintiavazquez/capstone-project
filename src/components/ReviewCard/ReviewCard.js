@@ -26,6 +26,7 @@ export default function ReviewCard(props) {
 			</Button>
 			<Button
 				type="button"
+				variant="edit"
 				onClick={() => {
 					setID(props.id);
 					showEdit();
