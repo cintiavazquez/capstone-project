@@ -4,10 +4,11 @@ import { nanoid } from 'nanoid';
 
 const useStore = create(
 	persist(set => ({
-		modalStates: { sent: false, delete: false },
+		modalStates: { sent: false, delete: false, updated: false },
 		modalMessages: {
 			sent: 'Thank you for your review',
 			delete: 'Do you really want to delete this review?',
+			updated: 'Your review has been updated',
 		},
 		modalHide: key => {
 			set(state => {
@@ -19,6 +20,13 @@ const useStore = create(
 				return { modalStates: { ...state.modalStates, [key]: true } };
 			});
 		},
+		editmode: false,
+		showEdit: () => {
+			set({ editmode: true });
+		},
+		hideEdit: () => {
+			set({ editmode: false });
+		},
 		id: [],
 		setID: id => {
 			set(() => {
@@ -29,14 +37,14 @@ const useStore = create(
 			{
 				id: nanoid(),
 				name: 'Vegan yoghurt',
-				rating: 'good',
+				rating: 'Good',
 				comment: 'I liked this product',
 				location: 'Edeka Hamburg',
 			},
 			{
 				id: nanoid(),
 				name: 'Mango ice cream',
-				rating: 'bad',
+				rating: 'Bad',
 				comment: "I didn't like this product",
 				location: 'Eisdiele Hamburg',
 			},
@@ -61,6 +69,23 @@ const useStore = create(
 			set(state => {
 				return {
 					reviews: state.reviews.filter(review => review.id !== id),
+				};
+			});
+		},
+		editReview: (data, id) => {
+			set(state => {
+				return {
+					reviews: state.reviews.map(review =>
+						review.id === id
+							? {
+									...review,
+									name: data.name,
+									rating: data.rating,
+									comment: data.comment,
+									location: data.location,
+							  }
+							: review
+					),
 				};
 			});
 		},

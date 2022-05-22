@@ -5,6 +5,7 @@ import useStore from '../../useStore/useStore';
 export default function ReviewCard(props) {
 	const modalShow = useStore(state => state.modalShow);
 	const setID = useStore(state => state.setID);
+	const showEdit = useStore(state => state.showEdit);
 
 	return (
 		<SingleReviewCard>
@@ -22,6 +23,15 @@ export default function ReviewCard(props) {
 				}}
 			>
 				Delete
+			</Button>
+			<Button
+				type="button"
+				onClick={() => {
+					setID(props.id);
+					showEdit();
+				}}
+			>
+				Edit
 			</Button>
 		</SingleReviewCard>
 	);

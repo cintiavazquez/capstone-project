@@ -24,6 +24,16 @@ export default function Modal() {
 			</ModalWindow>
 		);
 	}
+	if (modalStates.updated === true) {
+		return (
+			<ModalWindow>
+				<p>{modalMessages.updated}</p>
+				<Button type="button" variant="close" onClick={() => modalHide('updated')}>
+					Close
+				</Button>
+			</ModalWindow>
+		);
+	}
 	if (modalStates.delete === true) {
 		return (
 			<ModalWindow>
