@@ -18,7 +18,6 @@ export default function ReviewCard(props) {
 				variant="delete"
 				onClick={() => {
 					setID(props.id);
-					console.log('I am an ID' + props.id);
 					modalShow('delete');
 				}}
 			>

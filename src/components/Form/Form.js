@@ -14,8 +14,8 @@ export default function Form() {
 	const reviews = useStore(state => state.reviews);
 	const addReview = useStore(state => state.addReview);
 	const modalShow = useStore(state => state.modalShow);
-	const hideEdit = useStore(state => state.hideEdit);
 	const editmode = useStore(state => state.editmode);
+	const hideEdit = useStore(state => state.hideEdit);
 	const editReview = useStore(state => state.editReview);
 	const ID = useStore(state => state.id);
 	const indexToUpdate = reviews.findIndex(review => review.id === ID);
