@@ -47,7 +47,7 @@ export default function Modal() {
 			</ModalWindow>
 		);
 	} else {
-		return '';
+		return null;
 	}
 }
 

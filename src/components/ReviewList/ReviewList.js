@@ -1,14 +1,9 @@
+import React from 'react';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import useStore from '../../useStore/useStore';
-import Form from '../Form/Form';
-import ListGrid from '../../UI/ListGrid.styled';
+import { ListGrid } from '../../UI/ListGrid.styled';
 
 export default function ReviewList() {
-	const editmode = useStore(state => state.editmode);
-	return editmode ? <EditModeOn /> : <EditModeOff />;
-}
-
-function EditModeOff() {
 	const reviews = useStore(state => state.reviews);
 	return (
 		<ListGrid>
@@ -26,7 +21,4 @@ function EditModeOff() {
 			})}
 		</ListGrid>
 	);
-}
-function EditModeOn() {
-	return <Form />;
 }

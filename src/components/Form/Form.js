@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../UI/Button.styled';
@@ -24,41 +24,42 @@ export default function Form() {
 		register,
 		handleSubmit,
 		reset,
-		watch,
+		setValue,
 
 		formState: { errors },
-	} = useForm({
-		defaultValues: editmode
-			? {
-					name: reviews[indexToUpdate].name,
-					rating: reviews[indexToUpdate].rating,
-					location: reviews[indexToUpdate].location,
-					comment: reviews[indexToUpdate].comment,
-			  }
-			: undefined,
-	});
+	} = useForm();
 
-	const newData = watch();
-
-	/* const prePopulateForm = useCallback(() => {
+	const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
 		setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
-	}, []); */
+	}, [indexToUpdate, reviews, setValue]);
 
-	/* function prePopulateForm() {
-		setValue('name', reviews[indexToUpdate].name);
-		setValue('rating', reviews[indexToUpdate].rating);
-		setValue('location', reviews[indexToUpdate].location);
-		setValue('comment', reviews[indexToUpdate].comment);
-	} */
+	const resetForm = useCallback(() => {
+		setValue('name', '');
+		setValue('rating', '');
+		setValue('location', '');
+		setValue('comment', '');
+	}, [setValue]);
+
+	useEffect(() => {
+		if (editmode) {
+			prePopulateForm();
+		} else {
+			resetForm();
+		}
+	}, [editmode, prePopulateForm, resetForm]);
 
 	const onSubmit = data => {
-		if (editmode === true) {
-			editReview(newData, ID), modalShow('updated'), hideEdit();
+		if (editmode) {
+			editReview(data, ID);
+			modalShow('updated');
+			hideEdit();
 		} else {
-			addReview(data), modalShow('sent'), reset();
+			addReview(data);
+			modalShow('sent');
+			reset();
 		}
 	};
 
