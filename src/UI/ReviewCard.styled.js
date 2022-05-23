@@ -5,5 +5,5 @@ export const SingleReviewCard = styled.li`
 	padding: 10px;
 	border-radius: 5px;
 	width: 360px;
-	height: 200px;
+	min-height: 200px;
 `;

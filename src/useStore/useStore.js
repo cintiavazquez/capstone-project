@@ -4,21 +4,14 @@ import { nanoid } from 'nanoid';
 
 const useStore = create(
 	persist(set => ({
-		modalStates: { sent: false, delete: false, updated: false },
+		modalState: null,
 		modalMessages: {
 			sent: 'Thank you for your review',
 			delete: 'Do you really want to delete this review?',
 			updated: 'Your review has been updated',
 		},
-		modalHide: key => {
-			set(state => {
-				return { modalStates: { ...state.modalStates, [key]: false } };
-			});
-		},
-		modalShow: key => {
-			set(state => {
-				return { modalStates: { ...state.modalStates, [key]: true } };
-			});
+		setModalState: modalState => {
+			set({ modalState });
 		},
 		editmode: false,
 		showEdit: () => {

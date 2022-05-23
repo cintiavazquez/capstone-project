@@ -13,7 +13,7 @@ import { Legend } from '../../UI/Legend.styled';
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
 	const addReview = useStore(state => state.addReview);
-	const modalShow = useStore(state => state.modalShow);
+	const setModalState = useStore(state => state.setModalState);
 	const editmode = useStore(state => state.editmode);
 	const hideEdit = useStore(state => state.hideEdit);
 	const editReview = useStore(state => state.editReview);
@@ -54,11 +54,11 @@ export default function Form() {
 	const onSubmit = data => {
 		if (editmode) {
 			editReview(data, ID);
-			modalShow('updated');
+			setModalState('updated');
 			hideEdit();
 		} else {
 			addReview(data);
-			modalShow('sent');
+			setModalState('sent');
 			reset();
 		}
 	};

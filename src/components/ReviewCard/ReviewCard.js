@@ -3,7 +3,7 @@ import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
 
 export default function ReviewCard(props) {
-	const modalShow = useStore(state => state.modalShow);
+	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
 	const showEdit = useStore(state => state.showEdit);
 
@@ -18,7 +18,7 @@ export default function ReviewCard(props) {
 				variant="delete"
 				onClick={() => {
 					setID(props.id);
-					modalShow('delete');
+					setModalState('delete');
 				}}
 			>
 				Delete

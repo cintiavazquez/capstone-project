@@ -1,5 +1,4 @@
 import Form from '../src/components/Form/Form';
-//import Modal from '../src/components/Form/Modal';
 import dynamic from 'next/dynamic';
 import useStore from '../src/useStore/useStore';
 
