@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../UI/Button.styled';
@@ -25,25 +25,34 @@ export default function Form() {
 		handleSubmit,
 		reset,
 		watch,
-		setValue,
 
 		formState: { errors },
-	} = useForm();
+	} = useForm({
+		defaultValues: editmode
+			? {
+					name: reviews[indexToUpdate].name,
+					rating: reviews[indexToUpdate].rating,
+					location: reviews[indexToUpdate].location,
+					comment: reviews[indexToUpdate].comment,
+			  }
+			: undefined,
+	});
 
 	const newData = watch();
 
-	function prePopulateForm() {
+	/* const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
 		setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
-	}
+	}, []); */
 
-	useEffect(() => {
-		{
-			editmode ? prePopulateForm() : '';
-		}
-	}, []);
+	/* function prePopulateForm() {
+		setValue('name', reviews[indexToUpdate].name);
+		setValue('rating', reviews[indexToUpdate].rating);
+		setValue('location', reviews[indexToUpdate].location);
+		setValue('comment', reviews[indexToUpdate].comment);
+	} */
 
 	const onSubmit = data => {
 		if (editmode === true) {

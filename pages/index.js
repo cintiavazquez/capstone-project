@@ -1,4 +1,3 @@
-import { ListGrid } from '../src/UI/ListGrid.styled';
 import Form from '../src/components/Form/Form';
 //import Modal from '../src/components/Form/Modal';
 import dynamic from 'next/dynamic';
@@ -16,10 +15,8 @@ export default function Home() {
 	return (
 		<>
 			<Modal />
-			{editmode ? '' : <Form />}
-			<ListGrid>
-				<ReviewList />
-			</ListGrid>
+			<Form />
+			{!editmode && <ReviewList />}
 		</>
 	);
 }
