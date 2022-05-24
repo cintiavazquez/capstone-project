@@ -1,4 +1,3 @@
-import Form from '../src/components/Form/Form';
 import dynamic from 'next/dynamic';
 import useStore from '../src/useStore/useStore';
 
@@ -14,7 +13,6 @@ export default function Home() {
 	return (
 		<>
 			<Modal />
-			<Form />
 			{!editmode && <ReviewList />}
 		</>
 	);
