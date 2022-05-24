@@ -9,6 +9,7 @@ import { TextArea } from '../../UI/TextArea.styled';
 import { Input } from '../../UI/Input.styled';
 import { FormFieldset } from '../../UI/Fieldset.styled';
 import { Legend } from '../../UI/Legend.styled';
+import { useRouter } from 'next/router';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -19,6 +20,7 @@ export default function Form() {
 	const editReview = useStore(state => state.editReview);
 	const ID = useStore(state => state.id);
 	const indexToUpdate = reviews.findIndex(review => review.id === ID);
+	const router = useRouter();
 
 	const {
 		register,
@@ -56,10 +58,12 @@ export default function Form() {
 			editReview(data, ID);
 			setModalState('updated');
 			hideEdit();
+			router.push('/');
 		} else {
 			addReview(data);
 			setModalState('sent');
 			reset();
+			router.push('/');
 		}
 	};
 

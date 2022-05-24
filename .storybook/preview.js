@@ -11,3 +11,18 @@ export const decorators = [
   },
 ];
 
+export const parameters = {
+  backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'white',
+        value: '#FFFFFF',
+      },
+      {
+        name: 'grey',
+        value: '#808080',
+      },
+    ],
+  },
+};
