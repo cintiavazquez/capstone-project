@@ -33,5 +33,12 @@ export const Button = styled.button`
 	  color: black;
       border: 1px solid black;
       }
+	  `}
+	  ${({ variant }) =>
+		variant === 'nav' &&
+		css`
+      border: none;
+	  background-color: transparent;
+      }
     `}
 `;
