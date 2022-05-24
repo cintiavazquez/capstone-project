@@ -1,11 +1,13 @@
 import { SingleReviewCard } from '../../UI/ReviewCard.styled';
 import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
+import { useRouter } from 'next/router';
 
 export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
 	const showEdit = useStore(state => state.showEdit);
+	const router = useRouter();
 
 	return (
 		<SingleReviewCard>
@@ -29,6 +31,7 @@ export default function ReviewCard(props) {
 				onClick={() => {
 					setID(props.id);
 					showEdit();
+					router.push('/post');
 				}}
 			>
 				Edit
