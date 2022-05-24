@@ -16,6 +16,8 @@ export default function ReviewList() {
 						rating={review.rating}
 						location={review.location}
 						comment={review.comment}
+						image={review.image}
+						altText={review.altText}
 					/>
 				);
 			})}

@@ -2,6 +2,8 @@ import { SingleReviewCard } from '../../UI/ReviewCard.styled';
 import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import { ImageWrapper } from '../../UI/ImageWrapper';
 
 export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
@@ -12,6 +14,9 @@ export default function ReviewCard(props) {
 	return (
 		<SingleReviewCard>
 			<h3>{props.name}</h3>
+			<ImageWrapper>
+				<Image src={props.image} alt={props.altText} layout="fill" objectFit="cover" />
+			</ImageWrapper>
 			<p>{props.rating}</p>
 			<p>{props.comment}</p>
 			<p>{props.location}</p>
