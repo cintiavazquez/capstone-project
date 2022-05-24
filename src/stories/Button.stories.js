@@ -22,6 +22,10 @@ const propsDel = {
 	children: 'Delete',
 };
 
+const propsEdit = {
+	children: 'Edit',
+};
+
 export function Submit() {
 	return <Button {...propsSubmit} />;
 }
@@ -31,4 +35,8 @@ export function Close() {
 
 export function Delete() {
 	return <Button variant="delete" {...propsDel} />;
+}
+
+export function Edit() {
+	return <Button variant="edit" {...propsEdit} />;
 }

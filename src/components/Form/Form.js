@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../UI/Button.styled';
@@ -11,21 +11,56 @@ import { FormFieldset } from '../../UI/Fieldset.styled';
 import { Legend } from '../../UI/Legend.styled';
 
 export default function Form() {
+	const reviews = useStore(state => state.reviews);
 	const addReview = useStore(state => state.addReview);
-	const modalShow = useStore(state => state.modalShow);
+	const setModalState = useStore(state => state.setModalState);
+	const editmode = useStore(state => state.editmode);
+	const hideEdit = useStore(state => state.hideEdit);
+	const editReview = useStore(state => state.editReview);
+	const ID = useStore(state => state.id);
+	const indexToUpdate = reviews.findIndex(review => review.id === ID);
 
 	const {
 		register,
 		handleSubmit,
 		reset,
+		setValue,
 
 		formState: { errors },
 	} = useForm();
 
+	const prePopulateForm = useCallback(() => {
+		setValue('name', reviews[indexToUpdate].name);
+		setValue('rating', reviews[indexToUpdate].rating);
+		setValue('location', reviews[indexToUpdate].location);
+		setValue('comment', reviews[indexToUpdate].comment);
+	}, [indexToUpdate, reviews, setValue]);
+
+	const resetForm = useCallback(() => {
+		setValue('name', '');
+		setValue('rating', '');
+		setValue('location', '');
+		setValue('comment', '');
+	}, [setValue]);
+
+	useEffect(() => {
+		if (editmode) {
+			prePopulateForm();
+		} else {
+			resetForm();
+		}
+	}, [editmode, prePopulateForm, resetForm]);
+
 	const onSubmit = data => {
-		addReview(data);
-		reset();
-		modalShow('sent');
+		if (editmode) {
+			editReview(data, ID);
+			setModalState('updated');
+			hideEdit();
+		} else {
+			addReview(data);
+			setModalState('sent');
+			reset();
+		}
 	};
 
 	return (
@@ -107,9 +142,13 @@ export default function Form() {
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
 
-			<Button type="submit" variant="post">
-				Post review
-			</Button>
+			{editmode ? (
+				<Button type="submit">Save</Button>
+			) : (
+				<Button type="submit" variant="post">
+					Post review
+				</Button>
+			)}
 		</FormStyled>
 	);
 }

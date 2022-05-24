@@ -1,7 +1,6 @@
-import { ListGrid } from '../src/UI/ListGrid.styled';
 import Form from '../src/components/Form/Form';
-//import Modal from '../src/components/Form/Modal';
 import dynamic from 'next/dynamic';
+import useStore from '../src/useStore/useStore';
 
 export default function Home() {
 	//delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
@@ -11,13 +10,12 @@ export default function Home() {
 	const Modal = dynamic(() => import('../src/components/Form/Modal'), {
 		ssr: false,
 	});
+	const editmode = useStore(state => state.editmode);
 	return (
 		<>
 			<Modal />
 			<Form />
-			<ListGrid>
-				<ReviewList />
-			</ListGrid>
+			{!editmode && <ReviewList />}
 		</>
 	);
 }

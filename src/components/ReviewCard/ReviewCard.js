@@ -3,8 +3,9 @@ import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
 
 export default function ReviewCard(props) {
-	const modalShow = useStore(state => state.modalShow);
+	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
+	const showEdit = useStore(state => state.showEdit);
 
 	return (
 		<SingleReviewCard>
@@ -17,11 +18,20 @@ export default function ReviewCard(props) {
 				variant="delete"
 				onClick={() => {
 					setID(props.id);
-					console.log('I am an ID' + props.id);
-					modalShow('delete');
+					setModalState('delete');
 				}}
 			>
 				Delete
+			</Button>
+			<Button
+				type="button"
+				variant="edit"
+				onClick={() => {
+					setID(props.id);
+					showEdit();
+				}}
+			>
+				Edit
 			</Button>
 		</SingleReviewCard>
 	);

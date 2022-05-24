@@ -3,42 +3,55 @@ import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
 
 export default function Modal() {
-	const modalStates = useStore(state => state.modalStates);
-	const modalHide = useStore(state => state.modalHide);
+	const modalState = useStore(state => state.modalState);
+	const setModalState = useStore(state => state.setModalState);
 	const modalMessages = useStore(state => state.modalMessages);
 	const deleteReview = useStore(state => state.deleteReview);
 	const ID = useStore(state => state.id);
 
-	const handleDelete = () => {
-		deleteReview(ID);
-		modalHide('delete');
+	const resetModal = () => {
+		setModalState(null);
 	};
 
-	if (modalStates.sent === true) {
-		return (
-			<ModalWindow>
-				<p>{modalMessages.sent}</p>
-				<Button type="button" variant="close" onClick={() => modalHide('sent')}>
-					Close
-				</Button>
-			</ModalWindow>
-		);
-	}
-	if (modalStates.delete === true) {
-		return (
-			<ModalWindow>
-				<p>{modalMessages.delete}</p>
-				<Button type="button" variant="delete" onClick={() => handleDelete()}>
-					Delete
-				</Button>
-				<Button type="button" variant="close" onClick={() => modalHide('delete')}>
-					Cancel
-				</Button>
-			</ModalWindow>
-		);
-	} else {
-		return '';
+	switch (modalState) {
+		case 'sent':
+			return (
+				<ModalWindow>
+					<p>{modalMessages[modalState]}</p>
+					<Button type="button" variant="close" onClick={resetModal}>
+						Close
+					</Button>
+				</ModalWindow>
+			);
+		case 'delete':
+			return (
+				<ModalWindow>
+					<p>{modalMessages[modalState]}</p>
+					<Button
+						type="button"
+						variant="delete"
+						onClick={() => {
+							deleteReview(ID);
+							resetModal();
+						}}
+					>
+						Delete
+					</Button>
+					<Button type="button" variant="close" onClick={resetModal}>
+						Cancel
+					</Button>
+				</ModalWindow>
+			);
+		case 'updated':
+			return (
+				<ModalWindow>
+					<p>{modalMessages[modalState]}</p>
+					<Button type="button" variant="close" onClick={resetModal}>
+						Close
+					</Button>
+				</ModalWindow>
+			);
+		default:
+			return null;
 	}
 }
-
-/* onClick={() => deleteReview(ID)} */
