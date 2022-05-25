@@ -57,6 +57,8 @@ const useStore = create(
 							rating: data.rating,
 							comment: data.comment,
 							location: data.location,
+							image: data.image,
+							altText: data.name,
 						},
 					],
 				};

@@ -36,6 +36,7 @@ export default function Form() {
 		setValue('rating', reviews[indexToUpdate].rating);
 		setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
+		setValue('image', reviews[indexToUpdate].image);
 	}, [indexToUpdate, reviews, setValue]);
 
 	const resetForm = useCallback(() => {
@@ -43,6 +44,7 @@ export default function Form() {
 		setValue('rating', '');
 		setValue('location', '');
 		setValue('comment', '');
+		setValue('image', '');
 	}, [setValue]);
 
 	useEffect(() => {
@@ -69,6 +71,19 @@ export default function Form() {
 
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
+			<Label htmlFor="image">Product picture (enter URL)</Label>
+			<Input
+				id="image"
+				type="url"
+				aria-invalid={errors.image ? 'true' : 'false'}
+				{...register('image', {
+					required: true,
+				})}
+			/>
+			{errors.image && errors.image.type === 'required' && (
+				<span>please enter a valid url</span>
+			)}
+
 			<FormFieldset
 				aria-invalid={errors.rating ? 'true' : 'false'}
 				{...register('rating', { required: true })}
