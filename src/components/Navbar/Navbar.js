@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '../../UI/Button.styled';
 import { Navigation } from '../../UI/Navigation.styled';
-import SVGIcon from '../SVGIcon';
+import SVGIcon from '../../UI/SVGIcon';
 
 export default function Navbar() {
 	return (

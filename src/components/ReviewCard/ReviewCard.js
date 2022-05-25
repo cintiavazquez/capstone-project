@@ -14,7 +14,7 @@ export default function ReviewCard(props) {
 	return (
 		<SingleReviewCard>
 			<h3>{props.name}</h3>
-			<ImageWrapper>
+			<ImageWrapper width="100px" height="100px">
 				<Image src={props.image.url} alt={props.altText} layout="fill" objectFit="cover" />
 			</ImageWrapper>
 			<p>{props.rating}</p>

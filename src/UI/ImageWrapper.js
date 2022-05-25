@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const ImageWrapper = styled.div`
-	width: 100px;
-	height: 100px;
+	width: ${({ width = '' }) => width};
+	height: ${({ height = '' }) => height};
 	position: relative;
 	object-fit: cover;
+	display: flex;
+	justify-content: ${({ justifyContent = '' }) => justifyContent};
 `;
