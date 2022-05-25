@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useStore from '../../useStore/useStore';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../UI/Button.styled';
@@ -10,6 +10,7 @@ import { Input } from '../../UI/Input.styled';
 import { FormFieldset } from '../../UI/Fieldset.styled';
 import { Legend } from '../../UI/Legend.styled';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -21,25 +22,61 @@ export default function Form() {
 	const ID = useStore(state => state.id);
 	const indexToUpdate = reviews.findIndex(review => review.id === ID);
 	const router = useRouter();
+	const CLOUD = process.env.CLOUDINARY_CLOUD;
+	const PRESET = process.env.CLOUDINARY_PRESET;
 
 	const {
 		register,
 		handleSubmit,
 		reset,
 		setValue,
+		watch,
 
 		formState: { errors },
 	} = useForm();
+
+	//CLOUDINARY-----------------------------
+	const placeholderImage = {
+		url: 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740',
+		width: 460,
+		height: 307,
+	};
+
+	const [previewImage, setPreviewImage] = useState(placeholderImage);
+	const uploadImage = async () => {
+		try {
+			const url = `https://api.cloudinary.com/v1_1/${CLOUD}/upload`;
+			const image = watch('image')[0];
+			console.log(watch('image'), 'image');
+
+			const fileData = new FormData();
+			fileData.append('file', image);
+			fileData.append('upload_preset', PRESET);
+
+			const response = await fetch(url, {
+				method: 'POST',
+				body: fileData,
+			});
+
+			setPreviewImage(await response.json());
+			console.log(response);
+		} catch (error) {
+			console.error(error.message);
+		}
+	};
+
+	//END CLOUDINARY------------------------
 
 	const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
 		setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
-		setValue('image', reviews[indexToUpdate].image);
+		setPreviewImage(reviews[indexToUpdate].image);
 	}, [indexToUpdate, reviews, setValue]);
 
 	const resetForm = useCallback(() => {
+		console.log('test');
 		setValue('name', '');
 		setValue('rating', '');
 		setValue('location', '');
@@ -51,11 +88,16 @@ export default function Form() {
 		if (editmode) {
 			prePopulateForm();
 		} else {
-			resetForm();
+			reset();
 		}
 	}, [editmode, prePopulateForm, resetForm]);
 
 	const onSubmit = data => {
+		data.image = {
+			url: previewImage.url,
+			width: previewImage.width,
+			height: previewImage.height,
+		};
 		if (editmode) {
 			editReview(data, ID);
 			setModalState('updated');
@@ -66,23 +108,31 @@ export default function Form() {
 			setModalState('sent');
 			reset();
 			router.push('/');
+			console.log(data);
 		}
 	};
 
+	console.log(previewImage);
+
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<Label htmlFor="image">Product picture (enter URL)</Label>
+			<Label htmlFor="image">Upload a picture:</Label>
 			<Input
 				id="image"
-				type="url"
+				type="file"
 				aria-invalid={errors.image ? 'true' : 'false'}
-				{...register('image', {
-					required: true,
-				})}
+				{...register('image')}
+				onChange={uploadImage}
 			/>
 			{errors.image && errors.image.type === 'required' && (
 				<span>please enter a valid url</span>
 			)}
+			<Image
+				src={previewImage.url}
+				alt={previewImage.url}
+				width={previewImage.width}
+				height={previewImage.height}
+			/>
 
 			<FormFieldset
 				aria-invalid={errors.rating ? 'true' : 'false'}

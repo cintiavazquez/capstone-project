@@ -15,7 +15,7 @@ export default function ReviewCard(props) {
 		<SingleReviewCard>
 			<h3>{props.name}</h3>
 			<ImageWrapper>
-				<Image src={props.image} alt={props.altText} layout="fill" objectFit="cover" />
+				<Image src={props.image.url} alt={props.altText} layout="fill" objectFit="cover" />
 			</ImageWrapper>
 			<p>{props.rating}</p>
 			<p>{props.comment}</p>
