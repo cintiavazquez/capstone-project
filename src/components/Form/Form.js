@@ -12,6 +12,7 @@ import { Legend } from '../../UI/Legend.styled';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
+import styled from 'styled-components';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -31,7 +32,6 @@ export default function Form() {
 		handleSubmit,
 		reset,
 		setValue,
-		watch,
 
 		formState: { errors },
 	} = useForm();
@@ -43,10 +43,10 @@ export default function Form() {
 	};
 
 	const [previewImage, setPreviewImage] = useState(placeholderImage);
-	const uploadImage = async () => {
+	const uploadImage = async event => {
 		try {
 			const url = `https://api.cloudinary.com/v1_1/${CLOUD}/upload`;
-			const image = watch('image')[0];
+			const image = event.target.files[0];
 
 			const fileData = new FormData();
 			fileData.append('file', image);
@@ -103,8 +103,18 @@ export default function Form() {
 
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<Label htmlFor="image">Upload a picture:</Label>
-			<Input id="image" type="file" {...register('image')} onChange={uploadImage} />
+			<Label htmlFor="image">
+				<Browse> Choose file</Browse>
+				Upload a picture
+			</Label>
+			<Input
+				display="block"
+				opacity="0"
+				id="image"
+				type="file"
+				{...register('image')}
+				onChange={uploadImage}
+			/>
 
 			<ImageWrapper justifyContent="center">
 				<Image
@@ -203,3 +213,10 @@ export default function Form() {
 		</FormStyled>
 	);
 }
+
+const Browse = styled.div`
+	color: green;
+	border: 2px solid green;
+	padding: 3px;
+	width: 100px;
+`;
