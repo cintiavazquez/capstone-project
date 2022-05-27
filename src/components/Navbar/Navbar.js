@@ -17,6 +17,11 @@ export default function Navbar() {
 						<SVGIcon variant="post" color="white" />
 					</Button>
 				</Link>
+				<Link passHref href="/profile">
+					<Button type="button" variant="nav">
+						<SVGIcon variant="profile" color="white" />
+					</Button>
+				</Link>
 			</Navigation>
 		</footer>
 	);

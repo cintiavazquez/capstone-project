@@ -4,11 +4,14 @@ import useStore from '../../useStore/useStore';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
+import SVGIcon from '../../UI/SVGIcon';
 
 export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
 	const showEdit = useStore(state => state.showEdit);
+	const favoriteTrue = useStore(state => state.favoriteTrue);
+	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
 
 	return (
@@ -20,6 +23,19 @@ export default function ReviewCard(props) {
 			<p>{props.rating}</p>
 			<p>{props.comment}</p>
 			<p>{props.location}</p>
+			<Button
+				type="button"
+				variant="favorite"
+				onClick={() => {
+					props.favorite ? favoriteFalse(props.id) : favoriteTrue(props.id);
+				}}
+			>
+				{props.favorite ? (
+					<SVGIcon variant="heart_filled" color="green" />
+				) : (
+					<SVGIcon variant="heart_outline" color="green" />
+				)}
+			</Button>
 			<Button
 				type="button"
 				variant="delete"
