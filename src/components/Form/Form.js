@@ -6,13 +6,14 @@ import { FormStyled } from '../../UI/Form.styled';
 import { InputWarning } from '../../UI/InputWarning.styled';
 import { Label } from '../../UI/Label.styled';
 import { TextArea } from '../../UI/TextArea.styled';
-import { Input } from '../../UI/Input.styled';
+import { Input, InputHidden } from '../../UI/Input.styled';
 import { FormFieldset } from '../../UI/Fieldset.styled';
 import { Legend } from '../../UI/Legend.styled';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
-import styled from 'styled-components';
+import SVGIcon from '../../UI/SVGIcon';
+import Div from '../../UI/Div.styled';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -104,12 +105,25 @@ export default function Form() {
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
 			<Label htmlFor="image">
-				<Browse> Choose file</Browse>
-				Upload a picture
+				<Div
+					color="grey"
+					border="3px solid transparent"
+					padding="15px"
+					width="60vw"
+					display="flex"
+					justifyContent="space-between"
+					alignItems="center"
+					borderRadius="50px"
+					background="linear-gradient(white, white) padding-box,
+					linear-gradient(to right, darkblue, darkorchid) border-box"
+				>
+					<SVGIcon variant="upload" color="grey" /> Upload your image
+				</Div>
 			</Label>
-			<Input
+			<InputHidden
 				display="block"
-				opacity="0"
+				top="-100%"
+				left="-100vw"
 				id="image"
 				type="file"
 				{...register('image')}
@@ -213,10 +227,3 @@ export default function Form() {
 		</FormStyled>
 	);
 }
-
-const Browse = styled.div`
-	color: green;
-	border: 2px solid green;
-	padding: 3px;
-	width: 100px;
-`;

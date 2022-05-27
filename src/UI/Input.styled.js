@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 export const Input = styled.input`
 	background-color: lightblue;
-	display: ${({ display = 'block' }) => display};
-	opacity: ${({ opacity = 100 }) => opacity};
+`;
+
+export const InputHidden = styled.input`
+	position: fixed;
+	top: -100%;
+	left: -100vw;
 `;
