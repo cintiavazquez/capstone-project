@@ -6,4 +6,5 @@ export const ModalWindow = styled.div`
 	position: fixed;
 	text-align: center;
 	background-color: white;
+	z-index: 1;
 `;

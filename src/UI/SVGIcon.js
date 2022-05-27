@@ -5,11 +5,7 @@ const svgObject = {
 
 function SVGIcon({ variant, size = '24px', color = 'currentColor' }) {
 	return (
-		<svg
-			/* xmlns="http://www.w3.org/2000/svg" */
-			viewBox="0 0 24 24"
-			style={{ width: size, height: size }}
-		>
+		<svg viewBox="0 0 24 24" style={{ width: size, height: size }}>
 			<path fill={color} d={svgObject[variant]} />
 		</svg>
 	);

@@ -7,4 +7,5 @@ export const ListGrid = styled.ul`
 	align-items: center;
 	gap: 5px;
 	padding: 10px;
+	margin-bottom: 20vh;
 `;
