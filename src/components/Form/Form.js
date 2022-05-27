@@ -80,9 +80,14 @@ export default function Form() {
 	}, [editmode, prePopulateForm, reset]);
 
 	const onSubmit = data => {
-		data.image = {
-			url: previewImage.url,
-		};
+		data.image =
+			previewImage.url ==
+			'https://res.cloudinary.com/dlzyhqilm/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1653520182/Group_16_ggv2bu.svg'
+				? {
+						url: 'https://images.unsplash.com/photo-1624160719218-33eb1081919c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+				  }
+				: { url: previewImage.url };
+
 		if (editmode) {
 			editReview(data, ID);
 			setModalState('updated');

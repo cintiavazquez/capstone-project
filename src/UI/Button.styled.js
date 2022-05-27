@@ -40,5 +40,12 @@ export const Button = styled.button`
       border: none;
 	  background-color: transparent;
       }
+	  `}
+	  ${({ variant }) =>
+		variant === 'favorite' &&
+		css`
+      border: none;
+	  background-color: transparent;
+      }
     `}
 `;

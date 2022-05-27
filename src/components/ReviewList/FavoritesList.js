@@ -3,11 +3,12 @@ import ReviewCard from '../ReviewCard/ReviewCard';
 import useStore from '../../useStore/useStore';
 import { ListGrid } from '../../UI/ListGrid.styled';
 
-export default function ReviewList() {
+export default function FavoritesList() {
 	const reviews = useStore(state => state.reviews);
+	const favorites = reviews.filter(review => review.favorite == true);
 	return (
 		<ListGrid>
-			{reviews.map(review => {
+			{favorites.map(review => {
 				return (
 					<ReviewCard
 						key={review.id}
