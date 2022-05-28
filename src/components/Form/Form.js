@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
-import Div from '../../UI/Div.styled';
+import DivFlex from '../../UI/DivFlex.styled';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -105,7 +105,7 @@ export default function Form() {
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
 			<Label htmlFor="image">
-				<Div
+				<DivFlex
 					color="grey"
 					border="3px solid transparent"
 					padding="15px"
@@ -118,7 +118,7 @@ export default function Form() {
 					linear-gradient(to right, darkblue, darkorchid) border-box"
 				>
 					<SVGIcon variant="upload" color="grey" /> Upload your image
-				</Div>
+				</DivFlex>
 			</Label>
 			<InputHidden
 				display="block"
