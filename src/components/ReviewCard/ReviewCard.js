@@ -10,6 +10,9 @@ export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
 	const showEdit = useStore(state => state.showEdit);
+	const contentDisplay = useStore(state => state.contentDisplay);
+	const showContent = useStore(state => state.showContent);
+	const hideContent = useStore(state => state.hideContent);
 	const favoriteTrue = useStore(state => state.favoriteTrue);
 	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
@@ -21,7 +24,27 @@ export default function ReviewCard(props) {
 				<Image src={props.image.url} alt={props.altText} layout="fill" objectFit="cover" />
 			</ImageWrapper>
 			<p>{props.rating}</p>
-			<p>{props.comment}</p>
+			<Button
+				type="button"
+				variant="invisible"
+				onClick={() => {
+					contentDisplay ? hideContent() : showContent();
+				}}
+			>
+				{contentDisplay ? (
+					<>
+						<p>Show less</p>
+						<SVGIcon variant="chevron_up" color="grey" />
+					</>
+				) : (
+					<>
+						<p>Read review</p>
+						<SVGIcon variant="chevron_down" color="grey" />
+					</>
+				)}
+			</Button>
+			{contentDisplay && <p>{props.comment}</p>}
+
 			<p>{props.location}</p>
 			<Button
 				type="button"
