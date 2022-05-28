@@ -109,7 +109,7 @@ export default function Form() {
 					color="grey"
 					border="3px solid transparent"
 					padding="15px"
-					width="60vw"
+					width="100%"
 					display="flex"
 					justifyContent="space-between"
 					alignItems="center"

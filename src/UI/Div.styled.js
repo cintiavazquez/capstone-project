@@ -3,6 +3,8 @@ const Div = styled.div`
 	margin: ${({ margin = '0px' }) => margin};
 	padding: ${({ padding = '0px' }) => padding};
 	width: ${({ width = 'auto' }) => width};
+	max-width: ${({ maxWidth = 'auto' }) => maxWidth};
+	min-width: ${({ minWidth = 'auto' }) => minWidth};
 	height: ${({ height = '' }) => height};
 	border: ${({ border = '' }) => border};
 	border-radius: ${({ borderRadius = '20px' }) => borderRadius};
