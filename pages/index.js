@@ -15,7 +15,14 @@ export default function Home() {
 	return (
 		<Div maxWidth="500px" margin="10vh auto 10vh auto">
 			<Modal />
-			<Typography variant="h1" component="h1">
+			<Typography
+				variant="h1"
+				component="h1"
+				fontStyle="italic"
+				fontSize="1.4rem"
+				fontWeight="400"
+				color="var(--medium-green)"
+			>
 				Ratings of vegan products in your area
 			</Typography>
 			{!editmode && <ReviewList />}

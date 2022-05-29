@@ -7,7 +7,7 @@ html {
 body {
 	padding: 0;
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-size: 1.6rem;
 }
 

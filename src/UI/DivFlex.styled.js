@@ -6,7 +6,7 @@ const DivFlex = styled.div`
 	max-width: ${({ maxWidth = 'auto' }) => maxWidth};
 	min-width: ${({ minWidth = 'auto' }) => minWidth};
 	height: ${({ height = '' }) => height};
-	border: ${({ border = '1px solid lightblue' }) => border};
+	border: ${({ border = '' }) => border};
 	border-radius: ${({ borderRadius = '20px' }) => borderRadius};
 	color: ${({ color = '' }) => color};
 	text-align: ${({ textAlign = '' }) => textAlign};

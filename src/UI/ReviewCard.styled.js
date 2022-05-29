@@ -5,8 +5,9 @@ export const SingleReviewCard = styled.li`
 	position: relative;
 	justify-content: space-between;
 	width: 360px;
-	height: 175px;
+	min-height: 175px;
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 2px 2px 8px grey;
+	gap: 5%;
 `;

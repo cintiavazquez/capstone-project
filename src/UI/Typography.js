@@ -55,15 +55,58 @@ export default function Typography({ children, variant, component, ...rest }) {
 
 const StyledH1 = styled.h1`
 	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
 	background: ${({ background }) => background};
 `;
-const StyledH2 = styled.h2``;
-const StyledH3 = styled.h3``;
-const StyledH4 = styled.h4``;
+const StyledH2 = styled.h2`
+	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
+	background: ${({ background }) => background};
+`;
+const StyledH3 = styled.h3`
+	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
+	background: ${({ background }) => background};
+`;
+const StyledH4 = styled.h4`
+	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
+	background: ${({ background }) => background};
+`;
 const StyledH5 = styled.h5``;
 const StyledH6 = styled.h6``;
 //const StyledSpan = styled.span``;
-const StyledP = styled.p``;
+const StyledP = styled.p`
+	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
+	background: ${({ background }) => background};
+`;
 const StyledBodyText = styled.p`
-	color: green;
+	color: ${({ color }) => color};
+	font-style: ${({ fontStyle }) => fontStyle};
+	font-size: ${({ fontSize }) => fontSize};
+	font-weight: ${({ fontWeight }) => fontWeight};
+	line-height: ${({ lineHeight }) => lineHeight};
+	height: ${({ height }) => height};
+	background: ${({ background }) => background};
 `;

@@ -7,6 +7,7 @@ import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
 import Div from '../../UI/Div.styled';
+import Typography from '../../UI/Typography.js';
 
 export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
@@ -21,23 +22,67 @@ export default function ReviewCard(props) {
 
 	return (
 		<SingleReviewCard>
-			<ImageWrapper width="140px" height="140px" borderRadius="10%">
-				<Image src={props.image.url} alt={props.altText} layout="fill" objectFit="cover" />
-			</ImageWrapper>
-			<DivFlex flexDirection="column" width="55%" gap="-20px">
-				<h3>{props.name}</h3>
-				<p>
-					{props.rating == 'Good' ? (
-						<SVGIcon variant="smiley_great" color="var(--rating-good)" size="20px" />
-					) : props.rating == 'Middling' ? (
-						<SVGIcon variant="smiley_okay" color="var(--rating-okay)" size="20px" />
-					) : (
-						<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="20px" />
-					)}
-				</p>
+			<Div>
+				<Div
+					position="absolute"
+					top="-5px"
+					right="-5px"
+					background="var(--lightest-color)"
+					borderRadius="50%"
+					padding="1%"
+					zIndex="1"
+				>
+					<Typography variant="p" component="p" fontSize="0rem" lineHeight="0rem">
+						{props.rating == 'Good' ? (
+							<SVGIcon
+								variant="smiley_great"
+								color="var(--rating-good)"
+								size="25px"
+							/>
+						) : props.rating == 'Middling' ? (
+							<SVGIcon variant="smiley_okay" color="var(--rating-okay)" size="25px" />
+						) : (
+							<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="25px" />
+						)}
+					</Typography>
+				</Div>
+				<ImageWrapper width="135px" height="135px" borderRadius="10%">
+					<Image
+						src={props.image.url}
+						alt={props.altText}
+						layout="fill"
+						objectFit="cover"
+					/>
+				</ImageWrapper>
+			</Div>
 
-				<p>{props.location}</p>
-				<DivFlex justifyContent="space-around">
+			<DivFlex flexDirection="column" width="60%">
+				<Typography
+					variant="h3"
+					component="h3"
+					fontStyle="regular"
+					fontSize="1.4rem"
+					fontWeight="600"
+					color="var(--text-dark)"
+				>
+					{props.name}
+				</Typography>
+
+				<DivFlex alignItems="center" gap="2%">
+					<SVGIcon variant="location" color="var(--medium-lilac)" size="15px" />
+					<Typography
+						variant="p"
+						component="p"
+						fontStyle="regular"
+						fontSize="1.2rem"
+						fontWeight="400"
+						color="var(--medium-lilac)"
+					>
+						{props.location}
+					</Typography>
+				</DivFlex>
+
+				<DivFlex justifyContent="space-around" alignItems="center">
 					<Button
 						type="button"
 						variant="favorite"
@@ -46,9 +91,17 @@ export default function ReviewCard(props) {
 						}}
 					>
 						{props.favorite ? (
-							<SVGIcon variant="heart_filled" color="var(--medium-green)" />
+							<SVGIcon
+								variant="heart_filled"
+								color="var(--medium-green)"
+								size="20px"
+							/>
 						) : (
-							<SVGIcon variant="heart_outline" color="var(--medium-green)" />
+							<SVGIcon
+								variant="heart_outline"
+								color="var(--medium-green)"
+								size="20px"
+							/>
 						)}
 					</Button>
 					<DivFlex flexDirection="column">
@@ -62,7 +115,17 @@ export default function ReviewCard(props) {
 							{contentDisplay ? (
 								<DivFlex alignItems="center" justifyContent="space-around">
 									<div>
-										<p>Show less</p>
+										<Typography
+											variant="p"
+											component="p"
+											fontStyle="regular"
+											fontSize="1.2rem"
+											fontWeight="400"
+											lineHeight="1.2rem"
+											color="var(--text-medium)"
+										>
+											Show less
+										</Typography>
 									</div>
 									<div>
 										<SVGIcon variant="chevron_up" color="grey" />
@@ -70,16 +133,39 @@ export default function ReviewCard(props) {
 								</DivFlex>
 							) : (
 								<DivFlex alignItems="center" justifyContent="space-around">
-									<p>Read review</p>
-									<SVGIcon variant="chevron_down" color="grey" />
+									<Typography
+										variant="p"
+										component="p"
+										fontStyle="regular"
+										fontSize="1.2rem"
+										fontWeight="400"
+										lineHeight="1.2rem"
+										color="var(--text-medium)"
+									>
+										Read review
+									</Typography>
+
+									<SVGIcon variant="chevron_down" color="var(--text-medium)" />
 								</DivFlex>
 							)}
 						</Button>
-						{contentDisplay && <p>{props.comment}</p>}
+						{contentDisplay && (
+							<Typography
+								variant="p"
+								component="p"
+								fontStyle="regular"
+								fontSize="1.2rem"
+								fontWeight="400"
+								lineHeight="1.2rem"
+								color="var(--text-medium)"
+							>
+								{props.comment}
+							</Typography>
+						)}
 					</DivFlex>
 				</DivFlex>
 			</DivFlex>
-			<Div position="absolute" top="10px" right="10px">
+			<Div position="absolute" top="2px" right="2px">
 				<Button
 					type="button"
 					variant="invisible"
@@ -91,7 +177,7 @@ export default function ReviewCard(props) {
 					<SVGIcon variant="delete" color="grey" size="20px" />
 				</Button>
 			</Div>
-			<Div position="absolute" bottom="10px" right="10px">
+			<Div position="absolute" bottom="2px" right="2px">
 				<Button
 					type="button"
 					variant="invisible"
