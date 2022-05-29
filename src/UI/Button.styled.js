@@ -25,17 +25,28 @@ export const Button = styled.button`
 	${({ variant }) =>
 		variant === 'close' &&
 		css`
-      background-color: blue;
-	  color: white;
-      border: none;
+      background-color: var(--light-lilac);
+	  border: 2px solid var(--medium-lilac);
+	  border-radius: 10px;
+	  padding: 15px;
+	  font-size: 1.6rem;
+	  font-weight: 200;
+	  color: var(--text-medium);
+      
       }
     `}
 	${({ variant }) =>
 		variant === 'delete' &&
 		css`
-      background-color: red;
-	  color: white;
-      border: none;
+       background-color: #E2BEC6;
+	   border: 2px solid var(--medium-lilac);
+	   border-radius: 10px;
+	   padding: 15px;
+	   font-size: 1.6rem;
+	   font-weight: 200;
+	   color: var(--text-dark);
+	   margin-bottom: 5px;
+		
       }
     `}
 	${({ variant }) =>
