@@ -95,16 +95,17 @@ export default function Form() {
 		if (editmode) {
 			editReview(data, ID);
 			setModalState('updated');
+			select('');
 			hideEdit();
 			router.push('/');
 		} else {
 			addReview(data);
 			setModalState('sent');
+			select('');
 			reset();
 			router.push('/');
 		}
 	};
-	console.log(smileySelect);
 
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
@@ -175,9 +176,9 @@ export default function Form() {
 				/>
 				<Label htmlFor="rating_good">
 					{smileySelect === 'good' ? (
-						<SVGIcon variant="smiley_great" color="var(--rating-good)" size="30px" />
+						<SVGIcon variant="smiley_good" color="var(--rating-good)" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_great" color="var(--text-medium)" size="30px" />
+						<SVGIcon variant="smiley_good" color="var(--text-medium)" size="30px" />
 					)}
 				</Label>
 
@@ -188,13 +189,13 @@ export default function Form() {
 					left="-100vw"
 					name="rating"
 					type="radio"
-					id="rating_middling"
-					value="Middling"
+					id="rating_okay"
+					value="Okay"
 					onClick={() => {
 						select('okay');
 					}}
 				/>
-				<Label htmlFor="rating_middling">
+				<Label htmlFor="rating_okay">
 					{smileySelect === 'okay' ? (
 						<SVGIcon variant="smiley_okay" color="orange" size="30px" />
 					) : (

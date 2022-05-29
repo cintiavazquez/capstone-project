@@ -20,13 +20,6 @@ const useStore = create(
 		hideEdit: () => {
 			set({ editmode: false });
 		},
-		contentDisplay: false,
-		showContent: () => {
-			set({ contentDisplay: true });
-		},
-		hideContent: () => {
-			set({ contentDisplay: false });
-		},
 		smileySelect: '',
 		select: key => {
 			set(() => {

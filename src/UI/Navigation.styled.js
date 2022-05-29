@@ -7,5 +7,6 @@ export const Navigation = styled.nav`
 	left: 0;
 	width: 100%;
 	height: 8vh;
+	background: white;
 	z-index: 3;
 `;

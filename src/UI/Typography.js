@@ -26,24 +26,7 @@ export default function Typography({ children, variant, component, ...rest }) {
 					{children}
 				</StyledH4>
 			);
-		case 'h5':
-			return (
-				<StyledH5 {...rest} as={component}>
-					{children}
-				</StyledH5>
-			);
-		case 'h6':
-			return (
-				<StyledH6 {...rest} as={component}>
-					{children}
-				</StyledH6>
-			);
-		case 'body1':
-			return (
-				<StyledBodyText {...rest} as={component}>
-					{children}
-				</StyledBodyText>
-			);
+
 		default:
 			return (
 				<StyledP {...rest} as={component}>
@@ -55,6 +38,7 @@ export default function Typography({ children, variant, component, ...rest }) {
 
 const StyledH1 = styled.h1`
 	color: ${({ color }) => color};
+	text-align: ${({ textAlign }) => textAlign};
 	font-style: ${({ fontStyle }) => fontStyle};
 	font-size: ${({ fontSize }) => fontSize};
 	font-weight: ${({ fontWeight }) => fontWeight};
@@ -64,6 +48,7 @@ const StyledH1 = styled.h1`
 `;
 const StyledH2 = styled.h2`
 	color: ${({ color }) => color};
+	text-align: ${({ textAlign }) => textAlign};
 	font-style: ${({ fontStyle }) => fontStyle};
 	font-size: ${({ fontSize }) => fontSize};
 	font-weight: ${({ fontWeight }) => fontWeight};
@@ -73,6 +58,7 @@ const StyledH2 = styled.h2`
 `;
 const StyledH3 = styled.h3`
 	color: ${({ color }) => color};
+	text-align: ${({ textAlign }) => textAlign};
 	font-style: ${({ fontStyle }) => fontStyle};
 	font-size: ${({ fontSize }) => fontSize};
 	font-weight: ${({ fontWeight }) => fontWeight};
@@ -82,6 +68,7 @@ const StyledH3 = styled.h3`
 `;
 const StyledH4 = styled.h4`
 	color: ${({ color }) => color};
+	text-align: ${({ textAlign }) => textAlign};
 	font-style: ${({ fontStyle }) => fontStyle};
 	font-size: ${({ fontSize }) => fontSize};
 	font-weight: ${({ fontWeight }) => fontWeight};
@@ -89,20 +76,10 @@ const StyledH4 = styled.h4`
 	height: ${({ height }) => height};
 	background: ${({ background }) => background};
 `;
-const StyledH5 = styled.h5``;
-const StyledH6 = styled.h6``;
-//const StyledSpan = styled.span``;
+
 const StyledP = styled.p`
 	color: ${({ color }) => color};
-	font-style: ${({ fontStyle }) => fontStyle};
-	font-size: ${({ fontSize }) => fontSize};
-	font-weight: ${({ fontWeight }) => fontWeight};
-	line-height: ${({ lineHeight }) => lineHeight};
-	height: ${({ height }) => height};
-	background: ${({ background }) => background};
-`;
-const StyledBodyText = styled.p`
-	color: ${({ color }) => color};
+	text-align: ${({ textAlign }) => textAlign};
 	font-style: ${({ fontStyle }) => fontStyle};
 	font-size: ${({ fontSize }) => fontSize};
 	font-weight: ${({ fontWeight }) => fontWeight};

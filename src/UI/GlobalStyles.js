@@ -20,6 +20,10 @@ a {
 	box-sizing: border-box;
 }
 
+.logo{
+	font-family: "Pacifico";
+}
+
 :root {
 	--darkest-color: #000000;
 	--dark-lilac: #431e41;

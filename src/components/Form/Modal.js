@@ -34,7 +34,7 @@ export default function Modal() {
 						alignItems="center"
 						height="40%"
 						top="25%"
-						background="rgba(220, 213, 225, 0.9);"
+						background="rgba(254, 254, 254, 0.9);"
 						borderRadius="none"
 					>
 						<SVGAnimation
@@ -82,7 +82,7 @@ export default function Modal() {
 						alignItems="center"
 						height="40%"
 						top="25%"
-						background="rgba(220, 213, 225, 0.9);"
+						background="rgba(254, 254, 254, 0.9);"
 						borderRadius="none"
 					>
 						<Typography
@@ -127,7 +127,7 @@ export default function Modal() {
 						alignItems="center"
 						height="40%"
 						top="25%"
-						background="rgba(220, 213, 225, 0.9);"
+						background="rgba(254, 254, 254, 0.9);"
 						borderRadius="none"
 					>
 						<SVGAnimation

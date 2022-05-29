@@ -8,17 +8,17 @@ import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
 import Div from '../../UI/Div.styled';
 import Typography from '../../UI/Typography.js';
+import { useState } from 'react';
 
 export default function ReviewCard(props) {
 	const setModalState = useStore(state => state.setModalState);
 	const setID = useStore(state => state.setID);
 	const showEdit = useStore(state => state.showEdit);
-	const contentDisplay = useStore(state => state.contentDisplay);
-	const showContent = useStore(state => state.showContent);
-	const hideContent = useStore(state => state.hideContent);
 	const favoriteTrue = useStore(state => state.favoriteTrue);
 	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
+
+	const [display, setDisplay] = useState(false);
 
 	return (
 		<SingleReviewCard>
@@ -34,12 +34,8 @@ export default function ReviewCard(props) {
 				>
 					<Typography variant="p" component="p" fontSize="0rem" lineHeight="0rem">
 						{props.rating == 'Good' ? (
-							<SVGIcon
-								variant="smiley_great"
-								color="var(--rating-good)"
-								size="25px"
-							/>
-						) : props.rating == 'Middling' ? (
+							<SVGIcon variant="smiley_good" color="var(--rating-good)" size="25px" />
+						) : props.rating == 'Okay' ? (
 							<SVGIcon variant="smiley_okay" color="var(--rating-okay)" size="25px" />
 						) : (
 							<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="25px" />
@@ -93,13 +89,13 @@ export default function ReviewCard(props) {
 						{props.favorite ? (
 							<SVGIcon
 								variant="heart_filled"
-								color="var(--medium-green)"
+								color="var(--rating-good)"
 								size="20px"
 							/>
 						) : (
 							<SVGIcon
 								variant="heart_outline"
-								color="var(--medium-green)"
+								color="var(--rating-good)"
 								size="20px"
 							/>
 						)}
@@ -109,10 +105,10 @@ export default function ReviewCard(props) {
 							type="button"
 							variant="invisible"
 							onClick={() => {
-								contentDisplay ? hideContent() : showContent();
+								setDisplay(!display);
 							}}
 						>
-							{contentDisplay ? (
+							{display ? (
 								<DivFlex alignItems="center" justifyContent="space-around">
 									<div>
 										<Typography
@@ -149,7 +145,7 @@ export default function ReviewCard(props) {
 								</DivFlex>
 							)}
 						</Button>
-						{contentDisplay && (
+						{display && (
 							<Typography
 								variant="p"
 								component="p"

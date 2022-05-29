@@ -30,7 +30,7 @@ Default.args = {
 		{
 			id: 2,
 			name: 'caramel ice cream',
-			rating: 'middling',
+			rating: 'okay',
 			comment: 'Quite good vegan ice cream',
 			location: 'Eisbande Bartelsstraße 1, 20357 Hamburg',
 		},
