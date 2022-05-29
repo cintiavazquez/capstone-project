@@ -13,17 +13,17 @@ const Modal = dynamic(() => import('../src/components/Form/Modal'), {
 export default function Home() {
 	const editmode = useStore(state => state.editmode);
 	return (
-		<Div maxWidth="500px" margin="10vh auto 10vh auto">
+		<Div maxWidth="500px" margin="10vh 2vh 10vh 2vh">
 			<Modal />
 			<Typography
 				variant="h1"
 				component="h1"
 				fontStyle="italic"
-				fontSize="1.4rem"
-				fontWeight="400"
+				fontSize="1.6rem"
+				fontWeight="300"
 				color="var(--medium-green)"
 			>
-				Ratings of vegan products in your area
+				Rated vegan products
 			</Typography>
 			{!editmode && <ReviewList />}
 		</Div>
