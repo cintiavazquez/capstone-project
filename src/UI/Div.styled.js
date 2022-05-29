@@ -7,7 +7,7 @@ const Div = styled.div`
 	min-width: ${({ minWidth = 'auto' }) => minWidth};
 	height: ${({ height = '' }) => height};
 	border: ${({ border = '' }) => border};
-	border-radius: ${({ borderRadius = '20px' }) => borderRadius};
+	border-radius: ${({ borderRadius = '' }) => borderRadius};
 	color: ${({ color = '' }) => color};
 	text-align: ${({ textAlign = '' }) => textAlign};
 	vertical-align: ${({ verticalAlign = '' }) => verticalAlign};

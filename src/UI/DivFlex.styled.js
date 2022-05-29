@@ -13,7 +13,7 @@ const DivFlex = styled.div`
 	vertical-align: ${({ verticalAlign = '' }) => verticalAlign};
 	background: ${({ background = '' }) => background};
 	box-shadow: ${({ boxShadow = 'none' }) => boxShadow};
-	display: ${({ display = 'flex' }) => display};
+	display: flex;
 	flex-wrap: ${({ flexWrap = '' }) => flexWrap};
 	flex-direction: ${({ flexDirection = '' }) => flexDirection};
 	justify-content: ${({ justifyContent = '' }) => justifyContent};

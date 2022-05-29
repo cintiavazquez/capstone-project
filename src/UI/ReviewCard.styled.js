@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SingleReviewCard = styled.li`
 	display: flex;
+	position: relative;
 	justify-content: space-between;
 	width: 360px;
 	height: 175px;

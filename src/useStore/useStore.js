@@ -27,6 +27,12 @@ const useStore = create(
 		hideContent: () => {
 			set({ contentDisplay: false });
 		},
+		smileySelect: '',
+		select: key => {
+			set(() => {
+				return { smileySelect: key };
+			});
+		},
 		id: [],
 		setID: id => {
 			set(() => {
