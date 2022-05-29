@@ -28,11 +28,11 @@ export default function ReviewCard(props) {
 				<h3>{props.name}</h3>
 				<p>
 					{props.rating == 'Good' ? (
-						<SVGIcon variant="smiley_great" color="grey" size="20px" />
+						<SVGIcon variant="smiley_great" color="var(--rating-good)" size="20px" />
 					) : props.rating == 'Middling' ? (
-						<SVGIcon variant="smiley_okay" color="grey" size="20px" />
+						<SVGIcon variant="smiley_okay" color="var(--rating-okay)" size="20px" />
 					) : (
-						<SVGIcon variant="smiley_bad" color="grey" size="20px" />
+						<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="20px" />
 					)}
 				</p>
 
@@ -46,9 +46,9 @@ export default function ReviewCard(props) {
 						}}
 					>
 						{props.favorite ? (
-							<SVGIcon variant="heart_filled" color="green" />
+							<SVGIcon variant="heart_filled" color="var(--medium-green)" />
 						) : (
-							<SVGIcon variant="heart_outline" color="green" />
+							<SVGIcon variant="heart_outline" color="var(--medium-green)" />
 						)}
 					</Button>
 					<DivFlex flexDirection="column">

@@ -103,10 +103,11 @@ export default function Form() {
 			router.push('/');
 		}
 	};
+	console.log(smileySelect);
 
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<DivFlex justifyContent="space-around" alignItems="center">
+			<DivFlex justifyContent="space-between" alignItems="center" gap="5%">
 				<Label htmlFor="image">
 					<DivFlex
 						color="grey"
@@ -158,15 +159,15 @@ export default function Form() {
 					type="radio"
 					id="rating_good"
 					value="Good"
-					onChange={() => {
+					onClick={() => {
 						select('good');
 					}}
 				/>
 				<Label htmlFor="rating_good">
 					{smileySelect === 'good' ? (
-						<SVGIcon variant="smiley_great" color="green" size="25px" />
+						<SVGIcon variant="smiley_great" color="var(--rating-good)" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_great" color="grey" size="25px" />
+						<SVGIcon variant="smiley_great" color="grey" size="30px" />
 					)}
 				</Label>
 
@@ -179,15 +180,15 @@ export default function Form() {
 					type="radio"
 					id="rating_middling"
 					value="Middling"
-					onChange={() => {
+					onClick={() => {
 						select('okay');
 					}}
 				/>
 				<Label htmlFor="rating_middling">
 					{smileySelect === 'okay' ? (
-						<SVGIcon variant="smiley_okay" color="orange" size="25px" />
+						<SVGIcon variant="smiley_okay" color="orange" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_okay" color="grey" size="25px" />
+						<SVGIcon variant="smiley_okay" color="grey" size="30px" />
 					)}
 				</Label>
 
@@ -200,15 +201,15 @@ export default function Form() {
 					type="radio"
 					id="rating_bad"
 					value="Bad"
-					onChange={() => {
+					onClick={() => {
 						select('bad');
 					}}
 				/>
 				<Label htmlFor="rating_bad">
 					{smileySelect === 'bad' ? (
-						<SVGIcon variant="smiley_bad" color="red" size="25px" />
+						<SVGIcon variant="smiley_bad" color="red" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_bad" color="grey" size="25px" />
+						<SVGIcon variant="smiley_bad" color="grey" size="30px" />
 					)}
 				</Label>
 

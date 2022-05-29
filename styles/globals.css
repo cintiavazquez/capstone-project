@@ -16,3 +16,22 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+:root {
+	--darkest-color: #000000;
+	--dark-lilac: #431e41;
+
+	--medium-green: #8ea37e;
+	--medium-lilac: #937ea3;
+	--medium-grey: #808080;
+
+	--light-lilac: #dcd5e1;
+	--lightest-color: white;
+
+	--rating-good: #7caf54;
+	--rating-okay: orange;
+	--rating-bad: red;
+
+	--text-dark: #474747;
+	--text-medium: #787878;
+}
