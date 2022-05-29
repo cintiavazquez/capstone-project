@@ -15,8 +15,10 @@ export const Button = styled.button`
 		border: 3px solid transparent;
 		border-radius: 50px;
 		background:linear-gradient(white, white) padding-box,linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
-		color: var(--text-dark);
 		padding: 15px;
+		font-size: 1.4rem;
+		font-weight: 700;
+		color:var(--dark-lilac);
 		
       }
     `}

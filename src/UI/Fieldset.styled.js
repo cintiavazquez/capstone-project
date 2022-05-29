@@ -7,4 +7,5 @@ export const FormFieldset = styled.fieldset`
 	border: 1px solid var(--medium-lilac);
 	padding: 12px;
 	border-radius: 10px;
+	margin-bottom: 10px;
 `;

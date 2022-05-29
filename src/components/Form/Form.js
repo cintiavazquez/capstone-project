@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
+import Typography from '../../UI/Typography';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -108,20 +109,29 @@ export default function Form() {
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
 			<DivFlex justifyContent="space-between" alignItems="center" gap="5%">
-				<Label htmlFor="image">
+				<Label htmlFor="image" lineHeight="normal">
 					<DivFlex
-						color="grey"
+						color="var(--text-medium)"
 						border="3px solid transparent"
-						padding="15px"
+						padding="10px"
 						width="100%"
 						display="flex"
 						justifyContent="space-between"
+						gap="15px"
 						alignItems="center"
-						borderRadius="50px"
+						borderRadius="15px"
 						background="linear-gradient(white, white) padding-box,
 					linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box"
 					>
-						<SVGIcon variant="upload" color="grey" /> Upload your image
+						<SVGIcon variant="upload" color="grey" />
+						<Typography
+							variant="p"
+							component="p"
+							fontSize="1.4rem"
+							color="var(--medium-text)"
+						>
+							Upload your image
+						</Typography>
 					</DivFlex>
 				</Label>
 				<Input
@@ -167,7 +177,7 @@ export default function Form() {
 					{smileySelect === 'good' ? (
 						<SVGIcon variant="smiley_great" color="var(--rating-good)" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_great" color="grey" size="30px" />
+						<SVGIcon variant="smiley_great" color="var(--text-medium)" size="30px" />
 					)}
 				</Label>
 
@@ -188,7 +198,7 @@ export default function Form() {
 					{smileySelect === 'okay' ? (
 						<SVGIcon variant="smiley_okay" color="orange" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_okay" color="grey" size="30px" />
+						<SVGIcon variant="smiley_okay" color="var(--text-medium)" size="30px" />
 					)}
 				</Label>
 
@@ -209,7 +219,7 @@ export default function Form() {
 					{smileySelect === 'bad' ? (
 						<SVGIcon variant="smiley_bad" color="red" size="30px" />
 					) : (
-						<SVGIcon variant="smiley_bad" color="grey" size="30px" />
+						<SVGIcon variant="smiley_bad" color="var(--text-medium)" size="30px" />
 					)}
 				</Label>
 
@@ -253,7 +263,9 @@ export default function Form() {
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
 			{editmode ? (
-				<Button type="submit">Save</Button>
+				<Button type="submit" variant="post">
+					Save
+				</Button>
 			) : (
 				<Button type="submit" variant="post">
 					Post review
