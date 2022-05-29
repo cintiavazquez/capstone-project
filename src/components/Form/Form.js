@@ -119,7 +119,7 @@ export default function Form() {
 						alignItems="center"
 						borderRadius="50px"
 						background="linear-gradient(white, white) padding-box,
-					linear-gradient(to right, darkblue, darkorchid) border-box"
+					linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box"
 					>
 						<SVGIcon variant="upload" color="grey" /> Upload your image
 					</DivFlex>

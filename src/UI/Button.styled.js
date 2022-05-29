@@ -12,9 +12,12 @@ export const Button = styled.button`
 	${({ variant = 'post' }) =>
 		variant === 'post' &&
 		css`
-      background-color: seagreen;
-	  color: white;
-      border: none;
+		border: 3px solid transparent;
+		border-radius: 50px;
+		background:linear-gradient(white, white) padding-box,linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
+		color: var(--text-dark);
+		padding: 15px;
+		
       }
     `}
 	${({ variant }) =>

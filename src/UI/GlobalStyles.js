@@ -1,4 +1,7 @@
-/* html {
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+html {
 	font-size: 62.5%;
 }
 body {
@@ -36,4 +39,7 @@ a {
 	--text-dark: #474747;
 	--text-medium: #787878;
 }
- */
+
+`;
+
+export default GlobalStyle;

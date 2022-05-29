@@ -27,7 +27,7 @@ const propsEdit = {
 };
 
 export function Submit() {
-	return <Button {...propsSubmit} />;
+	return <Button variant="post" {...propsSubmit} />;
 }
 export function Close() {
 	return <Button variant="close" {...propsClose} />;
