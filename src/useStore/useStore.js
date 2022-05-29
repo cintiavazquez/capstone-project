@@ -99,7 +99,6 @@ const useStore = create(
 			});
 		},
 		editReview: (data, id) => {
-			console.log(data, id);
 			set(state => {
 				return {
 					reviews: state.reviews.map(review =>

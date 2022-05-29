@@ -6,6 +6,7 @@ export const Button = styled.button`
 		css`
 		border: none;
 		background-color: transparent;
+		
       }
     `}
 
@@ -62,6 +63,8 @@ export const Button = styled.button`
 		css`
       border: none;
 	  background-color: transparent;
+	  
+	  
       }
 	  `}
 	  ${({ variant }) =>
