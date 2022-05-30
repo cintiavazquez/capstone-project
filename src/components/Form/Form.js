@@ -263,15 +263,9 @@ export default function Form() {
 			{errors.comment && errors.comment.type === 'maxLength' && (
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
-			{editmode ? (
-				<Button type="submit" variant="post">
-					Save
-				</Button>
-			) : (
-				<Button type="submit" variant="post">
-					Post review
-				</Button>
-			)}
+			<Button type="submit" variant="post">
+				{editmode ? 'Save' : 'Post review'}
+			</Button>
 		</FormStyled>
 	);
 }

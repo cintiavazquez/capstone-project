@@ -50,20 +50,12 @@ export const Button = styled.button`
 		
       }
     `}
-	${({ variant }) =>
-		variant === 'edit' &&
-		css`
-      background-color: yellow;
-	  color: black;
-      border: 1px solid black;
-      }
-	  `}
+	
 	  ${({ variant }) =>
 		variant === 'nav' &&
 		css`
       border: none;
 	  background-color: transparent;
-	  
 	  
       }
 	  `}

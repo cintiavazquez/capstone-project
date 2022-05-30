@@ -26,6 +26,9 @@ Default.args = {
 			comment:
 				'Loved this vegan alternative to sour cream, even though it’s a bit pricey for daily use',
 			location: 'Edeka Bandelt Ottenser Hauptstraße 10, 22765 Hamburg',
+			image: {
+				url: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774',
+			},
 		},
 		{
 			id: 2,
@@ -33,6 +36,9 @@ Default.args = {
 			rating: 'okay',
 			comment: 'Quite good vegan ice cream',
 			location: 'Eisbande Bartelsstraße 1, 20357 Hamburg',
+			image: {
+				url: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774',
+			},
 		},
 		{
 			id: 3,
@@ -40,6 +46,9 @@ Default.args = {
 			rating: 'bad',
 			comment: 'Tastes literally like nothing',
 			location: 'Alnatura Hahnenkamp 1, 22765 Hamburg',
+			image: {
+				url: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774',
+			},
 		},
 	],
 };
