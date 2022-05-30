@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const Label = styled.label`
-	padding: 5px;
-	margin-top: 5px;
-	color: darkblue;
+	padding: 0px;
+	font-size: 1.4rem;
+	color: var(--text-medium);
+	line-height: ${({ lineHeight = '0%' }) => lineHeight};
 `;

@@ -17,7 +17,7 @@ describe('Review list', () => {
 					{
 						id: 2,
 						name: 'ice cream',
-						rating: 'middling',
+						rating: 'okay',
 						comment: 'Quite good',
 						location: 'Eisbande, 20357 Hamburg',
 					},
@@ -27,7 +27,7 @@ describe('Review list', () => {
 
 		const productName = screen.getAllByRole('heading', { level: 3 });
 		const rating1 = screen.getByText('good');
-		const rating2 = screen.getByText(/middling/i);
+		const rating2 = screen.getByText(/okay/i);
 		const reviewComment1 = screen.getByText(/Loved this/i);
 		const reviewComment2 = screen.getByText('Quite good');
 		const location1 = screen.getByText(/Edeka, 22765 Hamburg/i);

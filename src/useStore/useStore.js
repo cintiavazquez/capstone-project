@@ -20,6 +20,12 @@ const useStore = create(
 		hideEdit: () => {
 			set({ editmode: false });
 		},
+		smileySelect: '',
+		select: key => {
+			set(() => {
+				return { smileySelect: key };
+			});
+		},
 		id: [],
 		setID: id => {
 			set(() => {
@@ -93,7 +99,6 @@ const useStore = create(
 			});
 		},
 		editReview: (data, id) => {
-			console.log(data, id);
 			set(state => {
 				return {
 					reviews: state.reviews.map(review =>

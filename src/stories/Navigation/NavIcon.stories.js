@@ -1,5 +1,5 @@
-import SVGIcon from '../../components/SVGIcon';
 import { Button } from '../../UI/Button.styled';
+import SVGIcon from '../../UI/SVGIcon';
 
 export default {
 	title: 'Components/Navigation',

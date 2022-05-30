@@ -12,6 +12,9 @@ import { Legend } from '../../UI/Legend.styled';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
+import SVGIcon from '../../UI/SVGIcon';
+import DivFlex from '../../UI/DivFlex.styled';
+import Typography from '../../UI/Typography';
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -21,6 +24,8 @@ export default function Form() {
 	const hideEdit = useStore(state => state.hideEdit);
 	const editReview = useStore(state => state.editReview);
 	const ID = useStore(state => state.id);
+	const select = useStore(state => state.select);
+	const smileySelect = useStore(state => state.smileySelect);
 	const indexToUpdate = reviews.findIndex(review => review.id === ID);
 	const router = useRouter();
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
@@ -31,7 +36,6 @@ export default function Form() {
 		handleSubmit,
 		reset,
 		setValue,
-		watch,
 
 		formState: { errors },
 	} = useForm();
@@ -43,10 +47,10 @@ export default function Form() {
 	};
 
 	const [previewImage, setPreviewImage] = useState(placeholderImage);
-	const uploadImage = async () => {
+	const uploadImage = async event => {
 		try {
 			const url = `https://api.cloudinary.com/v1_1/${CLOUD}/upload`;
-			const image = watch('image')[0];
+			const image = event.target.files[0];
 
 			const fileData = new FormData();
 			fileData.append('file', image);
@@ -91,11 +95,13 @@ export default function Form() {
 		if (editmode) {
 			editReview(data, ID);
 			setModalState('updated');
+			select('');
 			hideEdit();
 			router.push('/');
 		} else {
 			addReview(data);
 			setModalState('sent');
+			select('');
 			reset();
 			router.push('/');
 		}
@@ -103,55 +109,123 @@ export default function Form() {
 
 	return (
 		<FormStyled onSubmit={handleSubmit(onSubmit)}>
-			<Label htmlFor="image">Upload a picture:</Label>
-			<Input id="image" type="file" {...register('image')} onChange={uploadImage} />
-
-			<ImageWrapper justifyContent="center">
-				<Image
-					src={previewImage.url}
-					alt={previewImage.url}
-					width="250px"
-					height="250px"
-					objectFit="cover"
+			<DivFlex justifyContent="space-between" alignItems="center" gap="5%">
+				<Label htmlFor="image" lineHeight="normal">
+					<DivFlex
+						color="var(--text-medium)"
+						border="3px solid transparent"
+						padding="10px"
+						width="100%"
+						display="flex"
+						justifyContent="space-between"
+						gap="15px"
+						alignItems="center"
+						borderRadius="15px"
+						background="linear-gradient(white, white) padding-box,
+					linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box"
+					>
+						<SVGIcon variant="upload" color="grey" />
+						<Typography
+							variant="p"
+							component="p"
+							fontSize="1.4rem"
+							color="var(--medium-text)"
+						>
+							Upload your image
+						</Typography>
+					</DivFlex>
+				</Label>
+				<Input
+					position="fixed"
+					top="-100%"
+					left="-100vw"
+					id="image"
+					type="file"
+					{...register('image')}
+					onChange={uploadImage}
 				/>
-			</ImageWrapper>
 
+				<ImageWrapper borderRadius="10%">
+					<Image
+						src={previewImage.url}
+						alt={previewImage.url}
+						width="150px"
+						height="150px"
+						objectFit="cover"
+					/>
+				</ImageWrapper>
+			</DivFlex>
 			<FormFieldset
 				aria-invalid={errors.rating ? 'true' : 'false'}
 				{...register('rating', { required: true })}
 			>
 				<Legend>Rate the product:</Legend>
 
-				<input
+				<Input
 					{...register('rating')}
+					position="fixed"
+					top="-100%"
+					left="-100vw"
 					name="rating"
 					type="radio"
 					id="rating_good"
 					value="Good"
+					onClick={() => {
+						select('good');
+					}}
 				/>
-				<Label htmlFor="rating_good">Good</Label>
+				<Label htmlFor="rating_good">
+					{smileySelect === 'good' ? (
+						<SVGIcon variant="smiley_good" color="var(--rating-good)" size="30px" />
+					) : (
+						<SVGIcon variant="smiley_good" color="var(--text-medium)" size="30px" />
+					)}
+				</Label>
 
-				<input
+				<Input
 					{...register('rating')}
+					position="fixed"
+					top="-100%"
+					left="-100vw"
 					name="rating"
 					type="radio"
-					id="rating_middling"
-					value="Middling"
+					id="rating_okay"
+					value="Okay"
+					onClick={() => {
+						select('okay');
+					}}
 				/>
-				<Label htmlFor="rating_middling">Middling</Label>
+				<Label htmlFor="rating_okay">
+					{smileySelect === 'okay' ? (
+						<SVGIcon variant="smiley_okay" color="orange" size="30px" />
+					) : (
+						<SVGIcon variant="smiley_okay" color="var(--text-medium)" size="30px" />
+					)}
+				</Label>
 
-				<input
+				<Input
 					{...register('rating')}
+					position="fixed"
+					top="-100%"
+					left="-100vw"
 					name="rating"
 					type="radio"
 					id="rating_bad"
 					value="Bad"
+					onClick={() => {
+						select('bad');
+					}}
 				/>
-				<Label htmlFor="rating_bad">Bad</Label>
+				<Label htmlFor="rating_bad">
+					{smileySelect === 'bad' ? (
+						<SVGIcon variant="smiley_bad" color="red" size="30px" />
+					) : (
+						<SVGIcon variant="smiley_bad" color="var(--text-medium)" size="30px" />
+					)}
+				</Label>
 
 				{errors.rating && <InputWarning role="alert">This field is required</InputWarning>}
 			</FormFieldset>
-
 			<Label htmlFor="name">Product name:</Label>
 			<Input
 				aria-invalid={errors.name ? 'true' : 'false'}
@@ -166,7 +240,6 @@ export default function Form() {
 			{errors.name && errors.name.type === 'maxLength' && (
 				<InputWarning role="alert">The name must be under 30 characters</InputWarning>
 			)}
-
 			<Label htmlFor="location">Where did you buy this product?</Label>
 			<Input
 				aria-invalid={errors.location ? 'true' : 'false'}
@@ -175,9 +248,7 @@ export default function Form() {
 				type="text"
 				id="location"
 			/>
-
 			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>}
-
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
 				aria-invalid={errors.comment ? 'true' : 'false'}
@@ -192,14 +263,9 @@ export default function Form() {
 			{errors.comment && errors.comment.type === 'maxLength' && (
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
-
-			{editmode ? (
-				<Button type="submit">Save</Button>
-			) : (
-				<Button type="submit" variant="post">
-					Post review
-				</Button>
-			)}
+			<Button type="submit" variant="post">
+				{editmode ? 'Save' : 'Post review'}
+			</Button>
 		</FormStyled>
 	);
 }

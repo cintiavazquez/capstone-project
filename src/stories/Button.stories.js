@@ -1,4 +1,5 @@
 import { Button } from '../UI/Button.styled';
+import SVGIcon from '../UI/SVGIcon';
 
 export default {
 	title: 'Components/Button',
@@ -23,11 +24,11 @@ const propsDel = {
 };
 
 const propsEdit = {
-	children: 'Edit',
+	children: <SVGIcon variant="edit" color="grey" size="20px" />,
 };
 
 export function Submit() {
-	return <Button {...propsSubmit} />;
+	return <Button variant="post" {...propsSubmit} />;
 }
 export function Close() {
 	return <Button variant="close" {...propsClose} />;
