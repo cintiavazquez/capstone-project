@@ -5,4 +5,5 @@ export const FormStyled = styled.form`
 	gap: 1rem;
 	margin-right: 10%;
 	margin-left: 10%;
+	margin-bottom: 20vh;
 `;

@@ -86,4 +86,5 @@ const StyledP = styled.p`
 	line-height: ${({ lineHeight }) => lineHeight};
 	height: ${({ height }) => height};
 	background: ${({ background }) => background};
+	position: ${({ position }) => position};
 `;

@@ -7,6 +7,7 @@ export default function Layout({ children }) {
 	return (
 		<Div maxWidth="500px" margin="5vh auto 5vh auto">
 			<DivFlex
+				background="white"
 				borderRadius="50px"
 				border="4px solid var(--dark-lilac)"
 				height="5rem"
@@ -14,6 +15,8 @@ export default function Layout({ children }) {
 				alignItems="center"
 				justifyContent="center"
 				margin="0 0 0 2vh"
+				position="absolute"
+				zIndex="1"
 			>
 				<Typography
 					className="logo"
