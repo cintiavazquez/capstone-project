@@ -87,4 +87,5 @@ const StyledP = styled.p`
 	height: ${({ height }) => height};
 	background: ${({ background }) => background};
 	position: ${({ position }) => position};
+	display: ${({ display }) => display}; ;
 `;

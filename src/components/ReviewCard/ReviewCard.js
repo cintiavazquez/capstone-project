@@ -66,6 +66,10 @@ export default function ReviewCard(props) {
 
 				<DivFlex alignItems="center" gap="2%">
 					<SVGIcon variant="location" color="var(--medium-lilac)" size="15px" />
+					<Typography variant="p" component="p" display="none">
+						{props.location[0]}
+						{props.location[1]}
+					</Typography>
 					<Typography
 						variant="p"
 						component="p"
@@ -74,7 +78,7 @@ export default function ReviewCard(props) {
 						fontWeight="400"
 						color="var(--medium-lilac)"
 					>
-						{props.location}
+						{props.location[2]}
 					</Typography>
 				</DivFlex>
 
