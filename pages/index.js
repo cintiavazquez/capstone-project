@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import useStore from '../src/useStore/useStore';
 import Typography from '../src/UI/Typography';
-import Div from '../src/UI/Div.styled';
+import DivStyled from '../src/UI/DivStyled.styled';
 
 //delete on mongoDB integration, only used for persist/localStorage (dynamic import with NO SSR form next.js docu --> https://nextjs.org/docs/advanced-features/dynamic-import)
 const ReviewList = dynamic(() => import('../src/components/ReviewList/ReviewList'), {
@@ -29,14 +29,14 @@ export default function Home() {
 				Rated vegan products
 			</Typography>
 
-			<Div
+			<DivStyled
 				width="100%"
 				height="40vh"
 				zIndex="0"
 				boxShadow="0 10px 28px rgba(0,0,0,0.25), 0 -5px 28px rgba(0,0,0,0.25);"
 			>
 				<Map />
-			</Div>
+			</DivStyled>
 
 			{!editmode && <ReviewList />}
 		</>

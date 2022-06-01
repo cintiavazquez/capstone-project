@@ -42,6 +42,8 @@ a {
 
 	--text-dark: #474747;
 	--text-medium: #787878;
+
+	--delete-pink: #E2BEC6;
 }
 
 `;

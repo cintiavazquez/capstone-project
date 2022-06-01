@@ -1,7 +1,7 @@
 import { Button } from '../../UI/Button.styled';
 import useStore from '../../useStore/useStore';
 import DivFlex from '../../UI/DivFlex.styled';
-import Div from '../../UI/Div.styled';
+import DivStyled from '../../UI/DivStyled.styled';
 import Typography from '../../UI/Typography';
 import { SVGAnimation } from '../../UI/SVGAnimation';
 
@@ -19,7 +19,7 @@ export default function Modal() {
 	switch (modalState) {
 		case 'sent':
 			return (
-				<Div
+				<DivStyled
 					position="fixed"
 					top="0"
 					right="0"
@@ -63,11 +63,11 @@ export default function Modal() {
 							Close
 						</Button>
 					</DivFlex>
-				</Div>
+				</DivStyled>
 			);
 		case 'delete':
 			return (
-				<Div
+				<DivStyled
 					position="fixed"
 					top="0"
 					right="0"
@@ -108,11 +108,11 @@ export default function Modal() {
 							Cancel
 						</Button>
 					</DivFlex>
-				</Div>
+				</DivStyled>
 			);
 		case 'updated':
 			return (
-				<Div
+				<DivStyled
 					position="fixed"
 					top="0"
 					right="0"
@@ -156,7 +156,7 @@ export default function Modal() {
 							Close
 						</Button>
 					</DivFlex>
-				</Div>
+				</DivStyled>
 			);
 		default:
 			return null;

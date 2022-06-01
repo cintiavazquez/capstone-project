@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '../../UI/Button.styled';
-import Div from '../../UI/Div.styled';
+import DivStyled from '../../UI/DivStyled.styled';
 import DivFlex from '../../UI/DivFlex.styled';
 import { Navigation } from '../../UI/Navigation.styled';
 import SVGIcon from '../../UI/SVGIcon';
@@ -9,7 +9,7 @@ export default function Navbar() {
 	return (
 		<footer>
 			<Navigation>
-				<Div
+				<DivStyled
 					width="100%"
 					height="100%"
 					background="linear-gradient(370deg, rgba(148,126,163,0.97) 33%, rgba(212,233,199,0.88) 49%, rgba(196,196,196,0) 100%);"
@@ -37,7 +37,7 @@ export default function Navbar() {
 							</Button>
 						</Link>
 					</DivFlex>
-				</Div>
+				</DivStyled>
 			</Navigation>
 		</footer>
 	);

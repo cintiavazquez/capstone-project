@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
-import Div from '../../UI/Div.styled';
+import DivStyled from '../../UI/DivStyled.styled';
 import Typography from '../../UI/Typography.js';
 import { useState } from 'react';
 
@@ -22,8 +22,8 @@ export default function ReviewCard(props) {
 
 	return (
 		<SingleReviewCard>
-			<Div>
-				<Div
+			<DivStyled>
+				<DivStyled
 					position="absolute"
 					top="-5px"
 					right="-5px"
@@ -41,7 +41,7 @@ export default function ReviewCard(props) {
 							<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="25px" />
 						)}
 					</Typography>
-				</Div>
+				</DivStyled>
 				<ImageWrapper width="135px" height="135px" borderRadius="10%">
 					<Image
 						src={props.image.url}
@@ -50,7 +50,7 @@ export default function ReviewCard(props) {
 						objectFit="cover"
 					/>
 				</ImageWrapper>
-			</Div>
+			</DivStyled>
 
 			<DivFlex flexDirection="column" width="60%">
 				<Typography
@@ -161,7 +161,7 @@ export default function ReviewCard(props) {
 					</DivFlex>
 				</DivFlex>
 			</DivFlex>
-			<Div position="absolute" top="2px" right="2px">
+			<DivStyled position="absolute" top="2px" right="2px">
 				<Button
 					type="button"
 					variant="invisible"
@@ -172,8 +172,8 @@ export default function ReviewCard(props) {
 				>
 					<SVGIcon variant="delete" color="grey" size="20px" />
 				</Button>
-			</Div>
-			<Div position="absolute" bottom="2px" right="2px">
+			</DivStyled>
+			<DivStyled position="absolute" bottom="2px" right="2px">
 				<Button
 					type="button"
 					variant="invisible"
@@ -185,7 +185,7 @@ export default function ReviewCard(props) {
 				>
 					<SVGIcon variant="edit" color="grey" size="20px" />
 				</Button>
-			</Div>
+			</DivStyled>
 		</SingleReviewCard>
 	);
 }

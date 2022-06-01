@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const Div = styled.div`
+const DivStyled = styled.div`
 	margin: ${({ margin = '0px' }) => margin};
 	padding: ${({ padding = '0px' }) => padding};
 	width: ${({ width = 'auto' }) => width};
@@ -26,4 +26,4 @@ const Div = styled.div`
 	cursor: ${({ cursor = '' }) => cursor};
 `;
 
-export default Div;
+export default DivStyled;

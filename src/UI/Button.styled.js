@@ -15,7 +15,7 @@ export const Button = styled.button`
 		css`
 		border: 3px solid transparent;
 		border-radius: 50px;
-		background:linear-gradient(white, white) padding-box,linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
+		background:linear-gradient(var(--lightest-color), var(--lightest-color)) padding-box,linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
 		padding: 15px;
 		font-size: 1.4rem;
 		font-weight: 700;
@@ -39,7 +39,7 @@ export const Button = styled.button`
 	${({ variant }) =>
 		variant === 'delete' &&
 		css`
-       background-color: #E2BEC6;
+       background-color: var(--delete-pink);
 	   border: 2px solid var(--medium-lilac);
 	   border-radius: 10px;
 	   padding: 15px;
