@@ -1,12 +1,13 @@
-import Div from '../../UI/Div.styled';
+import DivStyled from '../../UI/DivStyled.styled';
 import DivFlex from '../../UI/DivFlex.styled';
 import Typography from '../../UI/Typography';
 import Navbar from '../Navbar/Navbar';
 
 export default function Layout({ children }) {
 	return (
-		<Div maxWidth="500px" margin="5vh auto 5vh auto">
+		<DivStyled maxWidth="500px" margin="5vh auto 5vh auto">
 			<DivFlex
+				background="var(--lightest-color)"
 				borderRadius="50px"
 				border="4px solid var(--dark-lilac)"
 				height="5rem"
@@ -14,6 +15,8 @@ export default function Layout({ children }) {
 				alignItems="center"
 				justifyContent="center"
 				margin="0 0 0 2vh"
+				position="absolute"
+				zIndex="1"
 			>
 				<Typography
 					className="logo"
@@ -28,6 +31,6 @@ export default function Layout({ children }) {
 			</DivFlex>
 			{children}
 			<Navbar />
-		</Div>
+		</DivStyled>
 	);
 }

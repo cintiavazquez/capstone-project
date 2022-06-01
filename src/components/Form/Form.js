@@ -121,7 +121,7 @@ export default function Form() {
 						gap="15px"
 						alignItems="center"
 						borderRadius="15px"
-						background="linear-gradient(white, white) padding-box,
+						background="linear-gradient(var(--lightest-color), var(--lightest-color)) padding-box,
 					linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box"
 					>
 						<SVGIcon variant="upload" color="grey" />

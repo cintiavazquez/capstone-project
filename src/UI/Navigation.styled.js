@@ -7,6 +7,6 @@ export const Navigation = styled.nav`
 	left: 0;
 	width: 100%;
 	height: 8vh;
-	background: white;
+	background: var(--lightest-color);
 	z-index: 3;
 `;
