@@ -50,6 +50,18 @@ const useStore = create(
 		updatePositions: (latitude, longitude, geoname) => {
 			set({ positions: { lat: latitude, long: longitude, geoname: geoname } });
 		},
+		center: {},
+		setCenter(latlng) {
+			set(() => {
+				return { center: latlng };
+			});
+		},
+		locEdit: {},
+		setLocEdit: (positionslat, positionslong) => {
+			set(() => {
+				return { locEdit: { lat: positionslat, long: positionslong } };
+			});
+		},
 		reviews: [
 			{
 				id: nanoid(),
@@ -102,14 +114,25 @@ const useStore = create(
 				};
 			});
 		},
-		editReview: (data, id) => {
+		editReview: (data, id, positionslat, positionslong, geoname) => {
 			set(state => {
 				return {
 					reviews: state.reviews.map(review =>
 						review.id === id
 							? {
 									...review,
-									...data,
+									id: data.id,
+									name: data.name,
+									rating: data.rating,
+									comment: data.comment,
+									location: {
+										lat: positionslat,
+										long: positionslong,
+										geoname: geoname,
+									},
+									image: data.image,
+									altText: data.name,
+									favorite: data.favorite,
 							  }
 							: review
 					),

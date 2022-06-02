@@ -102,7 +102,7 @@ export default function Form() {
 		let geoname = positions.geoname;
 
 		if (editmode) {
-			editReview(data, ID);
+			editReview(data, ID, locationLat, locationLong, geoname);
 			setModalState('updated');
 			select('');
 			hideEdit();

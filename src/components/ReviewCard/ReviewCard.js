@@ -17,6 +17,7 @@ export default function ReviewCard(props) {
 	const favoriteTrue = useStore(state => state.favoriteTrue);
 	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
+	const setLocEdit = useStore(state => state.setLocEdit);
 
 	const [display, setDisplay] = useState(false);
 
@@ -184,6 +185,7 @@ export default function ReviewCard(props) {
 					onClick={() => {
 						setID(props.id);
 						showEdit();
+						setLocEdit(props.location.lat, props.location.long);
 						router.push('/post');
 					}}
 				>
