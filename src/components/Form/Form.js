@@ -275,11 +275,13 @@ export default function Form() {
 			{errors.comment && errors.comment.type === 'maxLength' && (
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
-
+			<Typography variant="p" component="p" fontSize="1.4rem" color="var(--text-medium)">
+				Where did you buy the product?
+			</Typography>
 			<DivStyled
 				width="100%"
 				height="20vh"
-				margin="10px 0 10px 0"
+				margin="0 0 20px 0"
 				zIndex="0"
 				boxShadow="0 10px 28px rgba(0,0,0,0.25), 0 -5px 28px rgba(0,0,0,0.25);"
 			>

@@ -5,6 +5,7 @@ import 'leaflet-defaulticon-compatibility';
 import L from 'leaflet';
 import { useEffect } from 'react';
 import useStore from '../../useStore/useStore';
+import { getIcon } from './getIcons';
 
 export default function LeafletControlGeocoder() {
 	const updatePositions = useStore(state => state.updatePositions);
@@ -22,6 +23,25 @@ export default function LeafletControlGeocoder() {
 				console.warn('Unsupported geocoder', geocoderString);
 			}
 		}
+
+		var myMarker = null;
+
+		map.on('click', function (e) {
+			var coord = e.latlng;
+			var lat = coord.lat;
+			var lng = coord.lng;
+			console.log('You clicked the map at latitude: ' + lat + ' and longitude: ' + lng);
+			updatePositions(coord.lat, coord.lng, 'See on map');
+
+			if (myMarker == null) {
+				myMarker = L.marker(
+					{ lat: coord.lat, lng: coord.lng },
+					{ icon: getIcon('Default') }
+				).addTo(map);
+			} else {
+				myMarker.setLatLng(e.latlng);
+			}
+		});
 		const geocodecontrol = L.Control.geocoder({
 			query: '',
 			placeholder: 'Search here...',
@@ -29,8 +49,13 @@ export default function LeafletControlGeocoder() {
 			geocoder,
 		}).on('markgeocode', function (e) {
 			var latlng = e.geocode.center;
-			L.marker(latlng).addTo(map).bindPopup(e.geocode.name).openPopup();
+			L.marker(latlng, { icon: getIcon('Default') })
+				.addTo(map)
+				.bindPopup(e.geocode.name)
+				.openPopup();
+
 			map.fitBounds(e.geocode.bbox);
+
 			updatePositions(latlng.lat, latlng.lng, e.geocode.name);
 		});
 
