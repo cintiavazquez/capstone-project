@@ -15,6 +15,10 @@ import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
 import Typography from '../../UI/Typography';
+import dynamic from 'next/dynamic';
+import DivStyled from '../../UI/DivStyled.styled';
+
+const FormMap = dynamic(() => import('../Map/FormMap'), { ssr: false });
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -30,6 +34,8 @@ export default function Form() {
 	const router = useRouter();
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
 	const PRESET = process.env.CLOUDINARY_PRESET;
+	const positions = useStore(state => state.positions);
+	const updatePositions = useStore(state => state.updatePositions);
 
 	const {
 		register,
@@ -70,7 +76,7 @@ export default function Form() {
 	const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
-		setValue('location', reviews[indexToUpdate].location);
+		//setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
 		setPreviewImage(reviews[indexToUpdate].image);
 	}, [indexToUpdate, reviews, setValue]);
@@ -91,6 +97,9 @@ export default function Form() {
 						url: 'https://images.unsplash.com/photo-1624160719218-33eb1081919c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
 				  }
 				: { url: previewImage.url };
+		let locationLat = positions.lat;
+		let locationLong = positions.long;
+		let geoname = positions.geoname;
 
 		if (editmode) {
 			editReview(data, ID);
@@ -98,11 +107,14 @@ export default function Form() {
 			select('');
 			hideEdit();
 			router.push('/');
+		} else if (locationLat === null || locationLat === undefined) {
+			alert('Please provide a location');
 		} else {
-			addReview(data);
+			addReview(data, locationLat, locationLong, geoname);
 			setModalState('sent');
 			select('');
 			reset();
+			updatePositions(null);
 			router.push('/');
 		}
 	};
@@ -240,7 +252,7 @@ export default function Form() {
 			{errors.name && errors.name.type === 'maxLength' && (
 				<InputWarning role="alert">The name must be under 30 characters</InputWarning>
 			)}
-			<Label htmlFor="location">Where did you buy this product?</Label>
+			{/* <Label htmlFor="location">Where did you buy this product?</Label>
 			<Input
 				aria-invalid={errors.location ? 'true' : 'false'}
 				{...register('location', { required: true })}
@@ -248,7 +260,7 @@ export default function Form() {
 				type="text"
 				id="location"
 			/>
-			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>}
+			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>} */}
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
 				aria-invalid={errors.comment ? 'true' : 'false'}
@@ -263,6 +275,16 @@ export default function Form() {
 			{errors.comment && errors.comment.type === 'maxLength' && (
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
+
+			<DivStyled
+				width="100%"
+				height="20vh"
+				margin="10px 0 10px 0"
+				zIndex="0"
+				boxShadow="0 10px 28px rgba(0,0,0,0.25), 0 -5px 28px rgba(0,0,0,0.25);"
+			>
+				<FormMap />
+			</DivStyled>
 			<Button type="submit" variant="post">
 				{editmode ? 'Save' : 'Post review'}
 			</Button>

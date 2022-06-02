@@ -46,6 +46,10 @@ const useStore = create(
 				),
 			}));
 		},
+		positions: {},
+		updatePositions: (latitude, longitude, geoname) => {
+			set({ positions: { lat: latitude, long: longitude, geoname: geoname } });
+		},
 		reviews: [
 			{
 				id: nanoid(),
@@ -72,7 +76,7 @@ const useStore = create(
 				favorite: false,
 			},
 		],
-		addReview: data => {
+		addReview: (data, positionslat, positionslong, geoname) => {
 			set(state => {
 				return {
 					reviews: [
@@ -82,7 +86,7 @@ const useStore = create(
 							name: data.name,
 							rating: data.rating,
 							comment: data.comment,
-							location: data.location,
+							location: { lat: positionslat, long: positionslong, geoname: geoname },
 							image: data.image,
 							altText: data.name,
 							favorite: false,

@@ -3,6 +3,7 @@ import { Marker, Popup, useMapEvents } from 'react-leaflet';
 
 export default function LocationMarker() {
 	const [position, setPosition] = useState(null);
+
 	const map = useMapEvents({
 		locationfound(e) {
 			setPosition(e.latlng);
