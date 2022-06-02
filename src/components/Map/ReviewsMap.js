@@ -7,6 +7,8 @@ import 'leaflet-defaulticon-compatibility';
 import LocationMarker from './LocationMarker';
 import Typography from '../../UI/Typography';
 import { getIcon } from './getIcons';
+import { ImageWrapper } from '../../UI/ImageWrapper';
+import Image from 'next/image';
 
 export default function ReviewsMap() {
 	const reviews = useStore(state => state.reviews);
@@ -33,10 +35,18 @@ export default function ReviewsMap() {
 						icon={getIcon(review.rating)}
 					>
 						<Popup>
-							<Typography color="var(--text-light)">
+							<Typography variant="p" color="var(--text-light)">
 								{review.location.geoname}
 							</Typography>
-							{review.name}
+							<Typography variant="p">{review.name}</Typography>
+							<ImageWrapper width="100px" height="100px" borderRadius="10%">
+								<Image
+									src={review.image.url}
+									alt={review.altText}
+									layout="fill"
+									objectFit="cover"
+								/>
+							</ImageWrapper>
 						</Popup>
 					</Marker>
 				);
