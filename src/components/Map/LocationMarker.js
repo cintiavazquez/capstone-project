@@ -8,25 +8,17 @@ export default function LocationMarker() {
 	const [position, setPosition] = useState(null);
 	const { asPath } = useRouter();
 	const editmode = useStore(state => state.editmode);
-	const setCenter = useStore(state => state.setCenter);
 	const locEdit = useStore(state => state.locEdit);
 
 	const map = useMapEvents({
 		locationfound(e) {
-			setPosition(e.latlng);
 			{
-				editmode
-					? setCenter(locEdit)
-					: asPath == '/'
-					? map.flyTo(e.latlng, 14)
-					: map.panTo(e.latlng) && map.setZoom(12);
-				/* (
-			{
-				asPath == '/' && map.flyTo(e.latlng, 14);
+				asPath == '/' && map.flyTo(e.latlng, 14) && setPosition(e.latlng);
 			}
 			{
-				asPath == '/post' && map.panTo(e.latlng) && map.setZoom(12);
-			}) */
+				asPath == '/post' && editmode
+					? map.panTo(locEdit) && setPosition(locEdit)
+					: map.panTo(e.latlng) && map.setZoom(12);
 			}
 		},
 	});

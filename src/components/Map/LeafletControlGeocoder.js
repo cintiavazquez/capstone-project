@@ -28,9 +28,6 @@ export default function LeafletControlGeocoder() {
 
 		map.on('click', function (e) {
 			var coord = e.latlng;
-			var lat = coord.lat;
-			var lng = coord.lng;
-			console.log('You clicked the map at latitude: ' + lat + ' and longitude: ' + lng);
 			updatePositions(coord.lat, coord.lng, 'See on map');
 
 			if (myMarker == null) {

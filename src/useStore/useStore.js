@@ -50,16 +50,11 @@ const useStore = create(
 		updatePositions: (latitude, longitude, geoname) => {
 			set({ positions: { lat: latitude, long: longitude, geoname: geoname } });
 		},
-		center: {},
-		setCenter(latlng) {
-			set(() => {
-				return { center: latlng };
-			});
-		},
+
 		locEdit: {},
 		setLocEdit: (positionslat, positionslong) => {
 			set(() => {
-				return { locEdit: { lat: positionslat, long: positionslong } };
+				return { locEdit: { lat: positionslat, lng: positionslong } };
 			});
 		},
 		reviews: [
