@@ -41,6 +41,7 @@ export default function ReviewsMap() {
 					</Marker>
 				);
 			})}
+
 			<LocationMarker />
 		</MapContainer>
 	);

@@ -22,6 +22,13 @@ export default function LocationMarker() {
 			}
 		},
 	});
+	var card = document.querySelectorAll('.coordinates');
+
+	for (let i = 0; i < card.length; i++) {
+		card[i].addEventListener('mouseover', () => {
+			map.flyTo([24.7736546, -78.0000547]), 12;
+		});
+	}
 
 	useEffect(() => {
 		map.locate();
