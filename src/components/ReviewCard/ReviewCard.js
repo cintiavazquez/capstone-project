@@ -20,7 +20,8 @@ export default function ReviewCard(props) {
 	const setLocEdit = useStore(state => state.setLocEdit);
 	const updatePositions = useStore(state => state.updatePositions);
 	const zoomTo = useStore(state => state.zoomTo);
-
+	const routedZoomOn = useStore(state => state.routedZoomOn);
+	const { asPath } = useRouter();
 	const [display, setDisplay] = useState(false);
 
 	return (
@@ -73,6 +74,10 @@ export default function ReviewCard(props) {
 						type="button"
 						onClick={() => {
 							zoomTo(props.id);
+							if (asPath === '/profile') {
+								routedZoomOn();
+								router.push('/');
+							}
 						}}
 					>
 						<SVGIcon variant="location" color="var(--medium-lilac)" size="20px" />

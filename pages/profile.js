@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
 import FavoritesList from '../src/components/ReviewList/FavoritesList';
 import Typography from '../src/UI/Typography';
+import useStore from '../src/useStore/useStore';
 
 export default function Profile() {
+	const hideEdit = useStore(state => state.hideEdit);
+	useEffect(() => {
+		hideEdit();
+	}, [hideEdit]);
+
 	return (
 		<>
 			<Typography

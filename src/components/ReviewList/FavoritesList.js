@@ -6,6 +6,7 @@ import { ListGrid } from '../../UI/ListGrid.styled';
 export default function FavoritesList() {
 	const reviews = useStore(state => state.reviews);
 	const favorites = reviews.filter(review => review.favorite == true);
+
 	return (
 		<ListGrid>
 			{favorites.map(review => {
@@ -15,7 +16,11 @@ export default function FavoritesList() {
 						id={review.id}
 						name={review.name}
 						rating={review.rating}
-						location={review.location}
+						location={[
+							review.location.lat,
+							review.location.long,
+							review.location.geoname,
+						]}
 						comment={review.comment}
 						image={review.image}
 						altText={review.altText}

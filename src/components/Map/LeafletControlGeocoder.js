@@ -2,7 +2,7 @@ import { useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
-import L from 'leaflet';
+import * as L from 'leaflet';
 import { useEffect } from 'react';
 import useStore from '../../useStore/useStore';
 import { getIcon } from './getIcons';
@@ -46,14 +46,20 @@ export default function LeafletControlGeocoder() {
 			geocoder,
 		}).on('markgeocode', function (e) {
 			var latlng = e.geocode.center;
-			L.marker(latlng, { icon: getIcon('Default') })
-				.addTo(map)
-				.bindPopup(e.geocode.name)
-				.openPopup();
+			if (myMarker == null) {
+				myMarker = L.marker(latlng, { icon: getIcon('Default') })
+					.addTo(map)
+					.bindPopup(e.geocode.name)
+					.openPopup();
 
-			map.fitBounds(e.geocode.bbox);
+				map.fitBounds(e.geocode.bbox);
+				updatePositions(latlng.lat, latlng.lng, e.geocode.name);
+			} else {
+				myMarker.setLatLng(latlng).bindPopup(e.geocode.name).openPopup();
 
-			updatePositions(latlng.lat, latlng.lng, e.geocode.name);
+				map.fitBounds(e.geocode.bbox);
+				updatePositions(latlng.lat, latlng.lng, e.geocode.name);
+			}
 		});
 
 		geocodecontrol.addTo(map);
