@@ -9,6 +9,8 @@ export default function LocationMarker() {
 	const { asPath } = useRouter();
 	const editmode = useStore(state => state.editmode);
 	const locEdit = useStore(state => state.locEdit);
+	const zoomReview = useStore(state => state.zoomReview);
+	console.log(zoomReview);
 
 	const map = useMapEvents({
 		locationfound(e) {
@@ -22,17 +24,28 @@ export default function LocationMarker() {
 			}
 		},
 	});
-	var card = document.querySelectorAll('.coordinates');
-
-	for (let i = 0; i < card.length; i++) {
-		card[i].addEventListener('mouseover', () => {
-			map.flyTo([24.7736546, -78.0000547]), 12;
-		});
-	}
 
 	useEffect(() => {
 		map.locate();
 	}, [map]);
+
+	useEffect(() => {
+		map.flyTo([zoomReview[0].location.lat, zoomReview[0].location.long], 14);
+	}, [map, zoomReview]);
+
+	// Versuch 1:
+	/* useEffect(() => {
+		position !== null && zoomReview[0] !== undefined && zoomReview[0] !== null
+			? map.flyTo([zoomReview[0].location.lat, zoomReview[0].location.long], 14)
+			: null;
+	}, [map, position, zoomReview]); */
+
+	// Versuch 2:
+	/* useEffect(() => {
+		if (zoomReview[0] === null || zoomReview[0] === undefined) {
+			null;
+		} else map.flyTo([zoomReview[0].location.lat, zoomReview[0].location.long], 14);
+	}, [map, zoomReview]); */
 
 	return position === null ? null : asPath == '/' ? (
 		<Marker position={position} icon={getIcon('Default')}>

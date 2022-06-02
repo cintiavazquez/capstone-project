@@ -76,7 +76,6 @@ export default function Form() {
 	const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
-		//setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
 		setPreviewImage(reviews[indexToUpdate].image);
 	}, [indexToUpdate, reviews, setValue]);
@@ -252,15 +251,7 @@ export default function Form() {
 			{errors.name && errors.name.type === 'maxLength' && (
 				<InputWarning role="alert">The name must be under 30 characters</InputWarning>
 			)}
-			{/* <Label htmlFor="location">Where did you buy this product?</Label>
-			<Input
-				aria-invalid={errors.location ? 'true' : 'false'}
-				{...register('location', { required: true })}
-				name="location"
-				type="text"
-				id="location"
-			/>
-			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>} */}
+
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
 				aria-invalid={errors.comment ? 'true' : 'false'}

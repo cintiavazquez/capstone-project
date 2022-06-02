@@ -19,6 +19,7 @@ export default function ReviewCard(props) {
 	const router = useRouter();
 	const setLocEdit = useStore(state => state.setLocEdit);
 	const updatePositions = useStore(state => state.updatePositions);
+	const zoomTo = useStore(state => state.zoomTo);
 
 	const [display, setDisplay] = useState(false);
 
@@ -67,7 +68,16 @@ export default function ReviewCard(props) {
 				</Typography>
 
 				<DivFlex alignItems="center" gap="2%">
-					<SVGIcon variant="location" color="var(--medium-lilac)" size="15px" />
+					<Button
+						variant="invisible"
+						type="button"
+						onClick={() => {
+							zoomTo(props.id);
+						}}
+					>
+						<SVGIcon variant="location" color="var(--medium-lilac)" size="20px" />
+					</Button>
+
 					<Typography
 						variant="p"
 						component="p"
@@ -77,17 +87,6 @@ export default function ReviewCard(props) {
 						color="var(--medium-lilac)"
 					>
 						{props.location[2]}
-					</Typography>
-					<Typography
-						variant="p"
-						component="p"
-						fontStyle="regular"
-						fontSize="1.2rem"
-						fontWeight="400"
-						color="var(--medium-lilac)"
-						className="coordinates"
-					>
-						{props.location[0]}, {props.location[1]}
 					</Typography>
 				</DivFlex>
 
