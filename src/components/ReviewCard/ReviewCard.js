@@ -17,7 +17,11 @@ export default function ReviewCard(props) {
 	const favoriteTrue = useStore(state => state.favoriteTrue);
 	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
-
+	const setLocationEdit = useStore(state => state.setLocationEdit);
+	const updatePositions = useStore(state => state.updatePositions);
+	const zoomTo = useStore(state => state.zoomTo);
+	const routedZoomOn = useStore(state => state.routedZoomOn);
+	const { asPath } = useRouter();
 	const [display, setDisplay] = useState(false);
 
 	return (
@@ -65,7 +69,20 @@ export default function ReviewCard(props) {
 				</Typography>
 
 				<DivFlex alignItems="center" gap="2%">
-					<SVGIcon variant="location" color="var(--medium-lilac)" size="15px" />
+					<Button
+						variant="invisible"
+						type="button"
+						onClick={() => {
+							zoomTo(props.id);
+							if (asPath === '/profile') {
+								routedZoomOn();
+								router.push('/');
+							}
+						}}
+					>
+						<SVGIcon variant="location" color="var(--medium-lilac)" size="20px" />
+					</Button>
+
 					<Typography
 						variant="p"
 						component="p"
@@ -74,7 +91,7 @@ export default function ReviewCard(props) {
 						fontWeight="400"
 						color="var(--medium-lilac)"
 					>
-						{props.location}
+						{props.location[2]}
 					</Typography>
 				</DivFlex>
 
@@ -180,6 +197,8 @@ export default function ReviewCard(props) {
 					onClick={() => {
 						setID(props.id);
 						showEdit();
+						setLocationEdit(props.location[0], props.location[1]);
+						updatePositions(props.location[0], props.location[1], 'See on map');
 						router.push('/post');
 					}}
 				>

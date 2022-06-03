@@ -15,6 +15,10 @@ import { ImageWrapper } from '../../UI/ImageWrapper';
 import SVGIcon from '../../UI/SVGIcon';
 import DivFlex from '../../UI/DivFlex.styled';
 import Typography from '../../UI/Typography';
+import dynamic from 'next/dynamic';
+import DivStyled from '../../UI/DivStyled.styled';
+
+const FormMap = dynamic(() => import('../Map/FormMap'), { ssr: false });
 
 export default function Form() {
 	const reviews = useStore(state => state.reviews);
@@ -30,6 +34,8 @@ export default function Form() {
 	const router = useRouter();
 	const CLOUD = process.env.CLOUDINARY_CLOUD;
 	const PRESET = process.env.CLOUDINARY_PRESET;
+	const positions = useStore(state => state.positions);
+	const updatePositions = useStore(state => state.updatePositions);
 
 	const {
 		register,
@@ -70,7 +76,6 @@ export default function Form() {
 	const prePopulateForm = useCallback(() => {
 		setValue('name', reviews[indexToUpdate].name);
 		setValue('rating', reviews[indexToUpdate].rating);
-		setValue('location', reviews[indexToUpdate].location);
 		setValue('comment', reviews[indexToUpdate].comment);
 		setPreviewImage(reviews[indexToUpdate].image);
 	}, [indexToUpdate, reviews, setValue]);
@@ -93,16 +98,19 @@ export default function Form() {
 				: { url: previewImage.url };
 
 		if (editmode) {
-			editReview(data, ID);
+			editReview(data, ID, positions.lat, positions.long, positions.geoname);
 			setModalState('updated');
 			select('');
 			hideEdit();
 			router.push('/');
+		} else if (positions.lat === null || positions.lat === undefined) {
+			alert('Please provide a location');
 		} else {
-			addReview(data);
+			addReview(data, positions.lat, positions.long, positions.geoname);
 			setModalState('sent');
 			select('');
 			reset();
+			updatePositions(null);
 			router.push('/');
 		}
 	};
@@ -240,15 +248,7 @@ export default function Form() {
 			{errors.name && errors.name.type === 'maxLength' && (
 				<InputWarning role="alert">The name must be under 30 characters</InputWarning>
 			)}
-			<Label htmlFor="location">Where did you buy this product?</Label>
-			<Input
-				aria-invalid={errors.location ? 'true' : 'false'}
-				{...register('location', { required: true })}
-				name="location"
-				type="text"
-				id="location"
-			/>
-			{errors.location && <InputWarning role="alert">Please enter a location</InputWarning>}
+
 			<Label htmlFor="comment">Write your review</Label>
 			<TextArea
 				aria-invalid={errors.comment ? 'true' : 'false'}
@@ -263,6 +263,18 @@ export default function Form() {
 			{errors.comment && errors.comment.type === 'maxLength' && (
 				<InputWarning role="alert">The comment must be under 700 characters</InputWarning>
 			)}
+			<Typography variant="p" component="p" fontSize="1.4rem" color="var(--text-medium)">
+				Where did you buy the product?
+			</Typography>
+			<DivStyled
+				width="100%"
+				height="20vh"
+				margin="0 0 20px 0"
+				zIndex="0"
+				boxShadow="0 10px 28px rgba(0,0,0,0.25), 0 -5px 28px rgba(0,0,0,0.25);"
+			>
+				<FormMap />
+			</DivStyled>
 			<Button type="submit" variant="post">
 				{editmode ? 'Save' : 'Post review'}
 			</Button>

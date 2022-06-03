@@ -26,6 +26,7 @@ a {
 
 :root {
 	--darkest-color: #000000;
+	--dark-green-grey: #384032;
 	--dark-lilac: #431e41;
 
 	--medium-green: #8ea37e;
@@ -42,9 +43,24 @@ a {
 
 	--text-dark: #474747;
 	--text-medium: #787878;
+	--text-light: #A2A2A2;
 
 	--delete-pink: #E2BEC6;
 }
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background:var(--dark-green-grey);
+  color:var(--lightest-color);
+  opacity: 0.9;
+  font-size:14px;
+  line-height:24px;
+  }
+
+
+.custom-popup .leaflet-popup-tip {
+    background: var(--dark-green-grey);
+	opacity: 0.9;
+} 
 
 `;
 

@@ -14,7 +14,11 @@ export default function ReviewList() {
 						id={review.id}
 						name={review.name}
 						rating={review.rating}
-						location={review.location}
+						location={[
+							review.location.lat,
+							review.location.long,
+							review.location.geoname,
+						]}
 						comment={review.comment}
 						image={review.image}
 						altText={review.altText}
