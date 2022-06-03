@@ -52,10 +52,10 @@ const useStore = create(
 				set({ positions: { lat: latitude, long: longitude, geoname: geoname } });
 			},
 
-			locEdit: [],
-			setLocEdit: (positionslat, positionslong) => {
+			locationEdit: [],
+			setLocationEdit: (positionslat, positionslong) => {
 				set(() => {
-					return { locEdit: [positionslat, positionslong] };
+					return { locationEdit: [positionslat, positionslong] };
 				});
 			},
 			reviews: [
@@ -87,18 +87,11 @@ const useStore = create(
 			],
 			zoomReview: [
 				{
-					id: 1,
-					name: 'testname',
-					rating: 'testrating',
-					comment: 'testcomment',
 					location: {
 						lat: 52.5,
 						long: 13.4,
 						geoname: 'testname',
 					},
-					image: 'testimage',
-					altText: 'testname',
-					favorite: 'testfavorite',
 				},
 			],
 			zoomTo: id => {

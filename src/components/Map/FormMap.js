@@ -10,14 +10,14 @@ import useStore from '../../useStore/useStore';
 
 export default function FormMap() {
 	const editmode = useStore(state => state.editmode);
-	const locEdit = useStore(state => state.locEdit);
+	const locationEdit = useStore(state => state.locationEdit);
 
 	return (
 		<MapContainer
 			scrollWheelZoom="center"
 			className="custom-popup"
 			style={{ height: '20vh', width: '100%' }}
-			center={editmode ? locEdit : [52.5, 13.4]}
+			center={editmode ? locationEdit : [52.5, 13.4]}
 			zoom={editmode ? 18 : 6}
 			zIndex={0}
 		>

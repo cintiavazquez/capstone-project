@@ -21,13 +21,13 @@ export default function LocationMarker() {
 				}, 5000);
 			} else if (asPath === '/') {
 				map.flyTo(e.latlng, 14);
-				setPosition(e.latlng);
 			}
+			setPosition(e.latlng);
 		},
 	});
 
 	useEffect(() => {
-		map.locate();
+		asPath === '/' && map.locate();
 	}, [asPath, map]);
 
 	//This allows the user to click on the marker in the review posts and being taken to the respective location on the map

@@ -96,20 +96,17 @@ export default function Form() {
 						url: 'https://images.unsplash.com/photo-1624160719218-33eb1081919c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm9vZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
 				  }
 				: { url: previewImage.url };
-		let locationLat = positions.lat;
-		let locationLong = positions.long;
-		let geoname = positions.geoname;
 
 		if (editmode) {
-			editReview(data, ID, locationLat, locationLong, geoname);
+			editReview(data, ID, positions.lat, positions.long, positions.geoname);
 			setModalState('updated');
 			select('');
 			hideEdit();
 			router.push('/');
-		} else if (locationLat === null || locationLat === undefined) {
+		} else if (positions.lat === null || positions.lat === undefined) {
 			alert('Please provide a location');
 		} else {
-			addReview(data, locationLat, locationLong, geoname);
+			addReview(data, positions.lat, positions.long, positions.geoname);
 			setModalState('sent');
 			select('');
 			reset();

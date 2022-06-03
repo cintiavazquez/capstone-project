@@ -17,7 +17,7 @@ export default function ReviewCard(props) {
 	const favoriteTrue = useStore(state => state.favoriteTrue);
 	const favoriteFalse = useStore(state => state.favoriteFalse);
 	const router = useRouter();
-	const setLocEdit = useStore(state => state.setLocEdit);
+	const setLocationEdit = useStore(state => state.setLocationEdit);
 	const updatePositions = useStore(state => state.updatePositions);
 	const zoomTo = useStore(state => state.zoomTo);
 	const routedZoomOn = useStore(state => state.routedZoomOn);
@@ -197,7 +197,7 @@ export default function ReviewCard(props) {
 					onClick={() => {
 						setID(props.id);
 						showEdit();
-						setLocEdit(props.location[0], props.location[1]);
+						setLocationEdit(props.location[0], props.location[1]);
 						updatePositions(props.location[0], props.location[1], 'See on map');
 						router.push('/post');
 					}}
