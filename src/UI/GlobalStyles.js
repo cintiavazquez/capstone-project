@@ -23,6 +23,14 @@ a {
 .logo{
 	font-family: "Pacifico";
 }
+.landing{
+	font-family: "Pacifico";
+	font-size: 20vw;
+	position: absolute;
+	top: 20;
+	left:80;
+
+}
 
 :root {
 	--darkest-color: #000000;
@@ -39,13 +47,14 @@ a {
 
 	--rating-good: #78c041;
 	--rating-okay: orange;
-	--rating-bad: red;
+	--rating-bad: #EB144C;
 
 	--text-dark: #474747;
 	--text-medium: #787878;
 	--text-light: #A2A2A2;
 
 	--delete-pink: #E2BEC6;
+	--light-creme: #E5E2C7;
 }
 
 .custom-popup .leaflet-popup-content-wrapper {
@@ -61,7 +70,7 @@ a {
     background: var(--dark-green-grey);
 	opacity: 0.9;
 } 
-
+ 
 `;
 
 export default GlobalStyle;
