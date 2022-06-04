@@ -165,7 +165,7 @@ export default function Form() {
 			</DivFlex>
 			<FormFieldset
 				aria-invalid={errors.rating ? 'true' : 'false'}
-				{...register('rating', { required: true })}
+				{...register('rating', { required: true, pattern: /\S(.*\S)?/ })}
 			>
 				<Legend>Rate the product:</Legend>
 
@@ -237,7 +237,7 @@ export default function Form() {
 			<Label htmlFor="name">Product name:</Label>
 			<Input
 				aria-invalid={errors.name ? 'true' : 'false'}
-				{...register('name', { required: true, maxLength: 30 })}
+				{...register('name', { required: true, maxLength: 30, pattern: /\S(.*\S)?/ })}
 				name="name"
 				type="text"
 				id="name"

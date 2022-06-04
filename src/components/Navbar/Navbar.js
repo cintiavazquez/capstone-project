@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { Button } from '../../UI/Button.styled';
 import DivStyled from '../../UI/DivStyled.styled';
 import DivFlex from '../../UI/DivFlex.styled';
 import { Navigation } from '../../UI/Navigation.styled';
 import SVGIcon from '../../UI/SVGIcon';
+import { NavLink } from '../../UI/NavLink.styled';
 
 export default function Navbar() {
 	return (
@@ -17,24 +17,25 @@ export default function Navbar() {
 					<DivFlex
 						borderRadius="none"
 						justifyContent="space-around"
+						alignItems="center"
 						width="100%"
 						height="100%"
 						background="linear-gradient(144deg, rgba(142,163,126,0.25) 31%, rgba(144,216,190,0.36) 38%, rgba(250,252,158,1) 61%, rgba(187,244,214,0.5) 66%, rgba(120, 192, 65, 0.7) 100%)"
 					>
 						<Link passHref href="/">
-							<Button type="button" variant="nav">
+							<NavLink>
 								<SVGIcon variant="home" color="var(--dark-lilac)" />
-							</Button>
+							</NavLink>
 						</Link>
 						<Link passHref href="/post">
-							<Button type="button" variant="nav">
+							<NavLink>
 								<SVGIcon variant="post" color="var(--dark-lilac)" />
-							</Button>
+							</NavLink>
 						</Link>
 						<Link passHref href="/profile">
-							<Button type="button" variant="nav">
+							<NavLink>
 								<SVGIcon variant="profile" color="var(--dark-lilac)" />
-							</Button>
+							</NavLink>
 						</Link>
 					</DivFlex>
 				</DivStyled>

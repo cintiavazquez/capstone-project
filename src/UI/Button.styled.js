@@ -52,14 +52,6 @@ export const Button = styled.button`
     `}
 	
 	  ${({ variant }) =>
-		variant === 'nav' &&
-		css`
-      border: none;
-	  background-color: transparent;
-	  
-      }
-	  `}
-	  ${({ variant }) =>
 		variant === 'favorite' &&
 		css`
       border: none;

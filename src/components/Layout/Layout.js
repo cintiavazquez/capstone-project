@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 
 export default function Layout({ children }) {
 	return (
-		<DivStyled maxWidth="500px" margin="5vh auto 5vh auto">
+		<DivStyled maxWidth="500px" margin="20px auto 20px auto">
 			<DivFlex
 				background="var(--lightest-color)"
 				borderRadius="50px"
