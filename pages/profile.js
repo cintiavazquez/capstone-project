@@ -16,6 +16,7 @@ export default function Profile() {
 	return (
 		<>
 			<Modal />
+
 			<Typography
 				variant="h2"
 				component="h3"

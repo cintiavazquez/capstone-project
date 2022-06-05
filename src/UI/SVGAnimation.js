@@ -16,3 +16,21 @@ export const SVGAnimation = styled.svg`
 		}
 	}
 `;
+export const SVGStar = styled.svg`
+	animation-name: spin;
+	animation-duration: 3000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	position: absolute;
+	left: 46%;
+	top: 45%;
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+`;

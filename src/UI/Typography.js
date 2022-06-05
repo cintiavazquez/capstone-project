@@ -55,6 +55,12 @@ const StyledH2 = styled.h2`
 	line-height: ${({ lineHeight }) => lineHeight};
 	height: ${({ height }) => height};
 	background: ${({ background }) => background};
+	position: ${({ position }) => position};
+	left: ${({ left }) => left};
+	top: ${({ top }) => top};
+	bottom: ${({ bottom }) => bottom};
+	right: ${({ right }) => right};
+	transform: ${({ transform }) => transform};
 `;
 const StyledH3 = styled.h3`
 	color: ${({ color }) => color};

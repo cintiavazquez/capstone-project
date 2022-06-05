@@ -22,7 +22,7 @@ export default function Navbar() {
 						height="100%"
 						background="linear-gradient(144deg, rgba(142,163,126,0.25) 31%, rgba(144,216,190,0.36) 38%, rgba(250,252,158,1) 61%, rgba(187,244,214,0.5) 66%, rgba(120, 192, 65, 0.7) 100%)"
 					>
-						<Link passHref href="/">
+						<Link passHref href="/home">
 							<NavLink>
 								<SVGIcon variant="home" color="var(--dark-lilac)" />
 							</NavLink>

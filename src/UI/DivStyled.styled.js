@@ -24,6 +24,7 @@ const DivStyled = styled.div`
 	object-fit: ${({ objectFit = '' }) => objectFit};
 	overflow: ${({ overflow = '' }) => overflow};
 	cursor: ${({ cursor = '' }) => cursor};
+	aspect-ratio: ${({ aspectRatio = '' }) => aspectRatio};
 `;
 
 export default DivStyled;
