@@ -76,7 +76,7 @@ export default function ReviewCard(props) {
 							zoomTo(props.id);
 							if (asPath === '/profile') {
 								routedZoomOn();
-								router.push('/');
+								router.push('/home');
 							}
 						}}
 					>
@@ -95,28 +95,7 @@ export default function ReviewCard(props) {
 					</Typography>
 				</DivFlex>
 
-				<DivFlex justifyContent="space-around" alignItems="center">
-					<Button
-						type="button"
-						variant="favorite"
-						onClick={() => {
-							props.favorite ? favoriteFalse(props.id) : favoriteTrue(props.id);
-						}}
-					>
-						{props.favorite ? (
-							<SVGIcon
-								variant="heart_filled"
-								color="var(--rating-good)"
-								size="20px"
-							/>
-						) : (
-							<SVGIcon
-								variant="heart_outline"
-								color="var(--rating-good)"
-								size="20px"
-							/>
-						)}
-					</Button>
+				<DivFlex justifyContent="flex-start" alignItems="center">
 					<DivFlex flexDirection="column">
 						<Button
 							type="button"
@@ -126,7 +105,7 @@ export default function ReviewCard(props) {
 							}}
 						>
 							{display ? (
-								<DivFlex alignItems="center" justifyContent="space-around">
+								<DivFlex alignItems="center" justifyContent="flex-start">
 									<div>
 										<Typography
 											variant="p"
@@ -145,7 +124,7 @@ export default function ReviewCard(props) {
 									</div>
 								</DivFlex>
 							) : (
-								<DivFlex alignItems="center" justifyContent="space-around">
+								<DivFlex alignItems="center" justifyContent="flex-start">
 									<Typography
 										variant="p"
 										component="p"
@@ -163,17 +142,19 @@ export default function ReviewCard(props) {
 							)}
 						</Button>
 						{display && (
-							<Typography
-								variant="p"
-								component="p"
-								fontStyle="regular"
-								fontSize="1.2rem"
-								fontWeight="400"
-								lineHeight="1.2rem"
-								color="var(--text-medium)"
-							>
-								{props.comment}
-							</Typography>
+							<DivStyled margin="0 5px 5px 0">
+								<Typography
+									variant="p"
+									component="p"
+									fontStyle="regular"
+									fontSize="1.2rem"
+									fontWeight="400"
+									lineHeight="1.2rem"
+									color="var(--text-medium)"
+								>
+									{props.comment}
+								</Typography>
+							</DivStyled>
 						)}
 					</DivFlex>
 				</DivFlex>
@@ -188,6 +169,21 @@ export default function ReviewCard(props) {
 					}}
 				>
 					<SVGIcon variant="delete" color="grey" size="20px" />
+				</Button>
+			</DivStyled>
+			<DivStyled position="absolute" top="50px" right="2px">
+				<Button
+					type="button"
+					variant="favorite"
+					onClick={() => {
+						props.favorite ? favoriteFalse(props.id) : favoriteTrue(props.id);
+					}}
+				>
+					{props.favorite ? (
+						<SVGIcon variant="heart_filled" color="var(--rating-good)" size="20px" />
+					) : (
+						<SVGIcon variant="heart_outline" color="var(--rating-good)" size="20px" />
+					)}
 				</Button>
 			</DivStyled>
 			<DivStyled position="absolute" bottom="2px" right="2px">

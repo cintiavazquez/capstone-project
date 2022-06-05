@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 
 export default function Layout({ children }) {
 	return (
-		<DivStyled maxWidth="500px" margin="20px auto 20px auto">
+		<DivStyled maxWidth="500px" margin="20px auto 20px auto" LayoutQuery="media-query">
 			<DivFlex
 				background="var(--lightest-color)"
 				borderRadius="50px"
@@ -14,9 +14,9 @@ export default function Layout({ children }) {
 				width="5rem"
 				alignItems="center"
 				justifyContent="center"
-				margin="0 0 0 2vh"
 				position="absolute"
 				zIndex="1"
+				LogoQuery="media-query"
 			>
 				<Typography
 					className="logo"

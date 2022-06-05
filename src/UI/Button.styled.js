@@ -13,16 +13,21 @@ export const Button = styled.button`
 	${({ variant = 'post' }) =>
 		variant === 'post' &&
 		css`
-		border: 3px solid transparent;
-		border-radius: 50px;
-		background:linear-gradient(var(--lightest-color), var(--lightest-color)) padding-box,linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
-		padding: 15px;
-		font-size: 1.4rem;
-		font-weight: 700;
-		color:var(--dark-lilac);
-		
-      }
-    `}
+			border: 3px solid transparent;
+			border-radius: 50px;
+			background: linear-gradient(var(--lightest-color), var(--lightest-color)) padding-box,
+				linear-gradient(to right, var(--dark-lilac), var(--rating-good)) border-box;
+			padding: 15px;
+			font-size: 1.4rem;
+			font-weight: 700;
+			color: var(--dark-lilac);
+
+			@media only screen and (min-width: 350px) {
+				width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'close' &&
 		css`
@@ -33,6 +38,8 @@ export const Button = styled.button`
 	  font-size: 1.6rem;
 	  font-weight: 200;
 	  color: var(--text-medium);
+		
+	}
       
       }
     `}
