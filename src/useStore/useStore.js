@@ -32,19 +32,44 @@ const useStore = create(
 				return { id: id };
 			});
 		},
-		favoriteTrue: id => {
-			set(state => ({
-				reviews: state.reviews.map(review =>
-					review.id === id ? { ...review, favorite: true } : review
-				),
-			}));
+		favoriteTrue: async id => {
+			const favoriteReview = {
+				favorite: true,
+			};
+
+			try {
+				const response = await fetch('/api/review/' + id, {
+					method: 'PUT',
+					body: JSON.stringify(favoriteReview),
+				});
+				set(state => ({
+					reviews: state.reviews.map(review =>
+						review.id === id ? { ...review, favorite: true } : review
+					),
+				}));
+				console.log(await response.json());
+			} catch (error) {
+				console.error(`Upps das war ein Fehler: ${error}`);
+			}
 		},
-		favoriteFalse: id => {
-			set(state => ({
-				reviews: state.reviews.map(review =>
-					review.id === id ? { ...review, favorite: false } : review
-				),
-			}));
+		favoriteFalse: async id => {
+			const unfavoriteReview = {
+				favorite: false,
+			};
+			try {
+				const response = await fetch('/api/review/' + id, {
+					method: 'PUT',
+					body: JSON.stringify(unfavoriteReview),
+				});
+				set(state => ({
+					reviews: state.reviews.map(review =>
+						review.id === id ? { ...review, favorite: false } : review
+					),
+				}));
+				console.log(await response.json());
+			} catch (error) {
+				console.error(`Upps das war ein Fehler: ${error}`);
+			}
 		},
 		positions: {},
 		updatePositions: (latitude, longitude, geoname) => {
@@ -119,7 +144,6 @@ const useStore = create(
 		},
 
 		deleteReview: async id => {
-			console.log(id, 'LOGGING ID in useStore');
 			try {
 				const response = await fetch('/api/review/' + id, {
 					method: 'DELETE',
@@ -134,30 +158,54 @@ const useStore = create(
 				console.error(`Upps das war ein Fehler: ${error}`);
 			}
 		},
-		editReview: (data, id, positionslat, positionslong, geoname) => {
-			set(state => {
-				return {
-					reviews: state.reviews.map(review =>
-						review.id === id
-							? {
-									...review,
-									id: data.id,
-									name: data.name,
-									rating: data.rating,
-									comment: data.comment,
-									location: {
-										lat: positionslat,
-										long: positionslong,
-										geoname: geoname,
-									},
-									image: data.image,
-									altText: data.name,
-									favorite: data.favorite,
-							  }
-							: review
-					),
-				};
-			});
+		editReview: async (data, id, positionslat, positionslong, geoname) => {
+			const editedReview = {
+				id: data.id,
+				name: data.name,
+				rating: data.rating,
+				comment: data.comment,
+				location: {
+					lat: positionslat,
+					long: positionslong,
+					geoname: geoname,
+				},
+				image: data.image,
+				altText: data.name,
+				favorite: false,
+			};
+			try {
+				const response = await fetch('/api/review/' + id, {
+					method: 'PUT',
+					body: JSON.stringify(editedReview),
+				});
+				console.log('response body-->', await response.body);
+				set(state => {
+					return {
+						reviews: state.reviews.map(review =>
+							review.id === id
+								? {
+										...review,
+										id: data.id,
+										name: data.name,
+										rating: data.rating,
+										comment: data.comment,
+										location: {
+											lat: positionslat,
+											long: positionslong,
+											geoname: geoname,
+										},
+										image: data.image,
+										altText: data.name,
+										favorite: data.favorite,
+								  }
+								: review
+						),
+						entryToUpdate: null,
+					};
+				});
+			} catch (error) {
+				console.error(`Upps das war ein Fehler: ${error}`);
+			}
 		},
 	}) //,
 	//{ name: 'VGo' }

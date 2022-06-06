@@ -192,6 +192,7 @@ export default function ReviewCard(props) {
 					variant="invisible"
 					onClick={() => {
 						setID(props.id);
+						console.log(props.id, '--> props.id in clicked review card');
 						showEdit();
 						setLocationEdit(props.location[0], props.location[1]);
 						updatePositions(props.location[0], props.location[1], 'See on map');
