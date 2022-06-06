@@ -9,6 +9,7 @@ body {
 	margin: 0;
 	font-family: 'Lato', sans-serif;
 	font-size: 1.6rem;
+	background: var(--lightest-color);
 }
 
 a {
@@ -22,7 +23,8 @@ a {
 
 .logo{
 	font-family: "Pacifico";
-}
+	}
+
 .landing{
 	font-family: "Pacifico";
 	font-size: 20vw;
@@ -56,6 +58,7 @@ a {
 	--delete-pink: #E2BEC6;
 	--light-creme: #E5E2C7;
 }
+
 
 .custom-popup .leaflet-popup-content-wrapper {
   background:var(--dark-green-grey);

@@ -17,7 +17,7 @@ export default function ReviewsMap() {
 		<MapContainer
 			scrollWheelZoom="center"
 			className="custom-popup"
-			style={{ height: '40vh', width: '100%' }}
+			style={{ height: '100%', width: '100%' }}
 			center={[52.5, 13.4]}
 			zoom={6}
 			zIndex={0}

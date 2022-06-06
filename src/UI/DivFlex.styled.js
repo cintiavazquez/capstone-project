@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { css } from 'styled-components';
 const DivFlex = styled.div`
 	margin: ${({ margin = '0px' }) => margin};
 	padding: ${({ padding = '0px' }) => padding};
@@ -28,6 +29,14 @@ const DivFlex = styled.div`
 	object-fit: ${({ objectFit = '' }) => objectFit};
 	overflow: ${({ overflow = '' }) => overflow};
 	cursor: ${({ cursor = '' }) => cursor};
+
+	${props =>
+		props.LogoQuery &&
+		css`
+			@media only screen and (min-width: 790px) {
+				top: -50px;
+			}
+		`}
 `;
 
 export default DivFlex;

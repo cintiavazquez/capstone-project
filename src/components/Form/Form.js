@@ -42,7 +42,6 @@ export default function Form() {
 		handleSubmit,
 		reset,
 		setValue,
-
 		formState: { errors },
 	} = useForm();
 
@@ -102,7 +101,7 @@ export default function Form() {
 			setModalState('updated');
 			select('');
 			hideEdit();
-			router.push('/');
+			router.push('/home');
 		} else if (positions.lat === null || positions.lat === undefined) {
 			alert('Please provide a location');
 		} else {
@@ -111,7 +110,7 @@ export default function Form() {
 			select('');
 			reset();
 			updatePositions(null);
-			router.push('/');
+			router.push('/home');
 		}
 	};
 

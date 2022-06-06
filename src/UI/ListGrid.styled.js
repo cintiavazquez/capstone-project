@@ -8,4 +8,12 @@ export const ListGrid = styled.ul`
 	gap: 5px;
 	padding: 10px;
 	margin-bottom: 20vh;
+
+	@media (min-width: 770px) {
+		display: flex;
+		flex-flow:row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 50px;
+		
 `;

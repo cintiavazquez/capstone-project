@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { css } from 'styled-components';
 const DivStyled = styled.div`
 	margin: ${({ margin = '0px' }) => margin};
 	padding: ${({ padding = '0px' }) => padding};
@@ -25,6 +26,16 @@ const DivStyled = styled.div`
 	overflow: ${({ overflow = '' }) => overflow};
 	cursor: ${({ cursor = '' }) => cursor};
 	aspect-ratio: ${({ aspectRatio = '' }) => aspectRatio};
+
+	${props =>
+		props.LayoutQuery &&
+		css`
+			@media only screen and (min-width: 790px) {
+				min-width: 770px;
+				max-width: 800px;
+				margin: 100px auto 20px auto;
+			}
+		`}
 `;
 
 export default DivStyled;

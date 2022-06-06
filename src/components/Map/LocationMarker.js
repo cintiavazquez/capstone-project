@@ -15,11 +15,11 @@ export default function LocationMarker() {
 
 	const map = useMapEvents({
 		locationfound(e) {
-			if (asPath === '/' && routedZoom) {
+			if (asPath === '/home' && routedZoom) {
 				setTimeout(() => {
 					routedZoomOff();
 				}, 5000);
-			} else if (asPath === '/') {
+			} else if (asPath === '/home') {
 				map.flyTo(e.latlng, 14);
 			}
 			setPosition(e.latlng);
@@ -27,17 +27,17 @@ export default function LocationMarker() {
 	});
 
 	useEffect(() => {
-		asPath === '/' && map.locate();
+		asPath === '/home' && map.locate();
 	}, [asPath, map]);
 
 	//This allows the user to click on the marker in the review posts and being taken to the respective location on the map
 	useEffect(() => {
-		if (asPath === '/') {
+		if (asPath === '/home') {
 			map.flyTo([zoomReview[0].location.lat, zoomReview[0].location.long], 15);
 		}
 	}, [asPath, map, zoomReview]);
 
-	return position === null ? null : asPath === '/' ? (
+	return position === null ? null : asPath === '/home' ? (
 		<Marker position={position} icon={getIcon('Default')}>
 			<Popup>You are here</Popup>
 		</Marker>
