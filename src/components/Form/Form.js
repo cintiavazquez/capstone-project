@@ -87,7 +87,7 @@ export default function Form() {
 		}
 	}, [editmode, prePopulateForm, reset]);
 
-	const onSubmit = data => {
+	const onSubmit = async data => {
 		data.image =
 			previewImage.url ==
 			'https://res.cloudinary.com/dlzyhqilm/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1653520182/Group_16_ggv2bu.svg'

@@ -17,6 +17,7 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "immer": "^9.0.14",
     "leaflet": "^1.8.0",
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",

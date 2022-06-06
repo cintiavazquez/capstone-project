@@ -1,5 +1,5 @@
-import Review from '../../src/models/Review';
-import { dbConnect } from '../../src/lib/db/database';
+import Review from '../../../src/models/Review';
+import { dbConnect } from '../../../src/lib/db/database';
 
 export default async function handler(req, res) {
 	const { id } = req.query;
