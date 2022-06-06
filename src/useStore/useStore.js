@@ -112,12 +112,20 @@ const useStore = create(
 					};
 				});
 			},
-			deleteReview: id => {
-				set(state => {
-					return {
-						reviews: state.reviews.filter(review => review.id !== id),
-					};
-				});
+			deleteReview: async id => {
+				try {
+					const response = await fetch('/api/review/' + id, {
+						method: 'DELETE',
+					});
+					set(state => {
+						return {
+							reviews: state.reviews.filter(review => review.id !== id),
+						};
+					});
+					console.log(await response.json());
+				} catch (error) {
+					console.error(`Upps das war ein Fehler: ${error}`);
+				}
 			},
 			editReview: (data, id, positionslat, positionslong, geoname) => {
 				set(state => {
