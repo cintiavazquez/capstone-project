@@ -45,7 +45,7 @@ const useStore = create(set => ({
 					review.id === id ? { ...review, favorite: true } : review
 				),
 			}));
-			console.log(await response.json());
+			await response.json();
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -64,7 +64,7 @@ const useStore = create(set => ({
 					review.id === id ? { ...review, favorite: false } : review
 				),
 			}));
-			console.log(await response.json());
+			await response.json();
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -130,7 +130,7 @@ const useStore = create(set => ({
 				method: 'POST',
 				body: JSON.stringify(newReview),
 			});
-			console.log(await response.json());
+			await response.json();
 			set(
 				produce(draft => {
 					draft.reviews.push({ ...newReview });
@@ -151,7 +151,7 @@ const useStore = create(set => ({
 					reviews: state.reviews.filter(review => review.id !== id),
 				};
 			});
-			console.log(await response.json());
+			await response.json();
 		} catch (error) {
 			console.error(`Upps das war ein Fehler: ${error}`);
 		}
@@ -176,7 +176,7 @@ const useStore = create(set => ({
 				method: 'PUT',
 				body: JSON.stringify(editedReview),
 			});
-			console.log('response body-->', await response.body);
+			await response.body;
 			set(state => {
 				return {
 					reviews: state.reviews.map(review =>
