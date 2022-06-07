@@ -5,7 +5,6 @@ export default async function getReviews() {
 	await dbConnect();
 
 	const reviews = await Review.find();
-	console.log('get-Reviews: ', reviews);
 
 	return reviews.map(({ id, name, rating, location, comment, image, altText, favorite }) => {
 		return {
