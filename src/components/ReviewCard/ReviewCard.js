@@ -38,11 +38,26 @@ export default function ReviewCard(props) {
 				>
 					<Typography variant="p" component="p" fontSize="0rem" lineHeight="0rem">
 						{props.rating == 'Good' ? (
-							<SVGIcon variant="smiley_good" color="var(--rating-good)" size="25px" />
+							<SVGIcon
+								variant="smiley_good"
+								color="var(--rating-good)"
+								size="25px"
+								data-testid="good"
+							/>
 						) : props.rating == 'Okay' ? (
-							<SVGIcon variant="smiley_okay" color="var(--rating-okay)" size="25px" />
+							<SVGIcon
+								variant="smiley_okay"
+								color="var(--rating-okay)"
+								size="25px"
+								data-testid="okay"
+							/>
 						) : (
-							<SVGIcon variant="smiley_bad" color="var(--rating-bad)" size="25px" />
+							<SVGIcon
+								variant="smiley_bad"
+								color="var(--rating-bad)"
+								size="25px"
+								data-testid="bad"
+							/>
 						)}
 					</Typography>
 				</DivStyled>
