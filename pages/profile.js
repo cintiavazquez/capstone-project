@@ -1,16 +1,16 @@
-import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import FavoritesList from '../src/components/ReviewList/FavoritesList';
 import Typography from '../src/UI/Typography';
 import useStore from '../src/useStore/useStore';
-
-const Modal = dynamic(() => import('../src/components/Form/Modal'), {
-	ssr: false,
-});
+import Modal from '../src/components/Form/Modal';
 
 export default function Profile() {
 	useEffect(() => {
 		useStore.getState().hideEdit();
+	}, []);
+
+	useEffect(() => {
+		useStore.getState().fetchReviews();
 	}, []);
 
 	return (
