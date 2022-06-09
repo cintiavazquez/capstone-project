@@ -2,44 +2,58 @@ import { render, screen } from '@testing-library/react';
 import ReviewList from './ReviewList';
 import '@testing-library/jest-dom';
 
+jest.mock('next/router', () => ({
+	useRouter() {
+		return {
+			route: '/',
+			pathname: 'home',
+			query: '',
+			asPath: 'home',
+		};
+	},
+}));
+
 describe('Review list', () => {
 	it('renders two reviews', () => {
 		render(
 			<ReviewList
-				reviewData={[
+				reviews={[
 					{
 						id: 1,
-						name: 'Creme',
-						rating: 'good',
-						comment: 'Loved this',
-						location: 'Edeka, 22765 Hamburg',
+						name: 'Vegan yoghurt',
+						rating: 'Good',
+						comment:
+							'Loved this vegan alternative to sour cream, even though it’s a bit pricey for daily use',
+						location: { lat: 53.5507957, long: 9.9700752, geoname: 'Edeka Hamburg' },
+						image: {
+							url: 'https://images.unsplash.com/photo-1584278433313-562a1bc0aa6b?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746',
+						},
+						altText: 'Vegan yoghurt',
+						favorite: true,
+						zoom: false,
 					},
 					{
 						id: 2,
-						name: 'ice cream',
-						rating: 'okay',
-						comment: 'Quite good',
-						location: 'Eisbande, 20357 Hamburg',
+						name: 'Mango ice cream',
+						rating: 'Okay',
+						comment: 'Quite good vegan ice cream',
+						location: {
+							lat: 53.5557646,
+							long: 10.0006147,
+							geoname: 'Ballindamm, Altstadt, Hamburg-Mitte, Hamburg, 20095, Germany',
+						},
+						image: {
+							url: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774',
+						},
+						altText: 'Mango ice cream',
+						favorite: true,
+						zoom: false,
 					},
 				]}
 			/>
 		);
 
-		const productName = screen.getAllByRole('heading', { level: 3 });
-		const rating1 = screen.getByText('good');
-		const rating2 = screen.getByText(/okay/i);
-		const reviewComment1 = screen.getByText(/Loved this/i);
-		const reviewComment2 = screen.getByText('Quite good');
-		const location1 = screen.getByText(/Edeka, 22765 Hamburg/i);
-		const location2 = screen.getByText(/Eisbande, 20357 Hamburg/i);
-
-		expect(productName[0]).toBeInTheDocument();
-		expect(productName[1]).toBeInTheDocument();
-		expect(rating1).toBeInTheDocument();
-		expect(rating2).toBeInTheDocument();
-		expect(reviewComment1).toBeInTheDocument();
-		expect(reviewComment2).toBeInTheDocument();
-		expect(location1).toBeInTheDocument();
-		expect(location2).toBeInTheDocument();
+		const productArray = screen.getAllByRole('listitem');
+		expect(productArray.length).toBe(2);
 	});
 });

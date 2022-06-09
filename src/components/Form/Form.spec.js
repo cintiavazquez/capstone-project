@@ -10,14 +10,12 @@ describe('Form', () => {
 			name: /rate the product:/i,
 		});
 		const productName = screen.getByLabelText(/Product name:/i);
-		const productLocation = screen.getByLabelText(/Where did you buy this product?/i);
 		const productReview = screen.getByLabelText(/Write your review/i);
 		const submitButton = screen.getByRole('group', {
 			name: /rate the product:/i,
 		});
 
 		expect(productName).toBeInTheDocument();
-		expect(productLocation).toBeInTheDocument();
 		expect(productReview).toBeInTheDocument();
 		expect(productRating).toBeInTheDocument();
 		expect(submitButton).toBeInTheDocument();
